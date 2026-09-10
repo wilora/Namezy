@@ -2,268 +2,287 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Namezy – Username Generator</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at 50% 0%,#28112f,#0b0b12 45%,#07070b);
+color:white;
+min-height:100vh
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at 50% 0%, #24102d 0%, #0b0b12 45%, #07070b 100%);
-    color: white;
-    min-height: 100vh;
+header{
+padding:20px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #292735;
+background:#0b0b12e8;
+position:sticky;
+top:0;
+z-index:5
 }
 
-header {
-    padding: 22px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #252532;
-    background: rgba(10,10,17,0.85);
+.logo{
+font-size:28px;
+font-weight:800;
+color:#e58cff
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: 800;
-    color: #e58cff;
+.logo span{color:white}
+
+nav a{
+color:#bbb8c8;
+text-decoration:none;
+margin-left:24px;
+font-size:14px
 }
 
-.logo span {
-    color: white;
+.hero{
+text-align:center;
+padding:55px 20px 30px
 }
 
-nav a {
-    color: #bbb8c8;
-    text-decoration: none;
-    margin-left: 25px;
-    font-size: 14px;
+.small{
+color:#df91ff;
+letter-spacing:4px;
+font-size:12px;
+font-weight:bold
 }
 
-nav a:hover {
-    color: #e58cff;
+h1{
+font-size:clamp(58px,11vw,100px);
+margin:14px 0 8px;
+line-height:1;
+background:linear-gradient(90deg,#fff,#e77cff,#a879ff);
+-webkit-background-clip:text;
+color:transparent
 }
 
-.hero {
-    text-align: center;
-    padding: 70px 20px 35px;
+.subtitle{
+color:#aaa8b8;
+max-width:700px;
+margin:18px auto;
+font-size:18px;
+line-height:1.55
 }
 
-.small-title {
-    color: #df91ff;
-    letter-spacing: 4px;
-    font-size: 12px;
-    font-weight: bold;
+.platforms{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:9px;
+margin:24px auto;
+max-width:850px
 }
 
-h1 {
-    font-size: clamp(55px, 10vw, 100px);
-    margin: 15px 0 5px;
-    line-height: 1;
-    background: linear-gradient(90deg, #ffffff, #e77cff, #a879ff);
-    -webkit-background-clip: text;
-    color: transparent;
+.platform{
+padding:10px 15px;
+border:1px solid #454052;
+background:#151521;
+border-radius:30px;
+color:#d7cde1
 }
 
-.subtitle {
-    color: #aaa8b8;
-    max-width: 650px;
-    margin: 20px auto;
-    font-size: 18px;
-    line-height: 1.6;
+.card{
+width:min(900px,92%);
+margin:22px auto;
+padding:28px;
+background:#12121df2;
+border:1px solid #39384d;
+border-radius:22px;
+box-shadow:0 20px 70px #0008
 }
 
-.platforms {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 25px;
+label{
+display:block;
+margin-bottom:10px;
+font-weight:bold
 }
 
-.platform {
-    border: 1px solid #454052;
-    background: #151521;
-    padding: 10px 17px;
-    border-radius: 30px;
-    color: #d7cde1;
-    font-size: 14px;
+input{
+width:100%;
+padding:16px 18px;
+border-radius:14px;
+border:1px solid #44435a;
+background:#0f0f19;
+color:white;
+font-size:16px;
+outline:none
 }
 
-.generator {
-    width: min(900px, 92%);
-    margin: 25px auto;
-    padding: 35px;
-    background: rgba(18,18,29,0.95);
-    border: 1px solid #39384d;
-    border-radius: 22px;
-    box-shadow: 0 20px 70px rgba(0,0,0,0.4);
+input:focus{
+border-color:#df78ff
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+.section-title{
+margin-top:23px;
+margin-bottom:10px;
+font-weight:bold
 }
 
-input {
-    width: 100%;
-    padding: 17px 20px;
-    border-radius: 14px;
-    border: 1px solid #44435a;
-    background: #10101a;
-    color: white;
-    font-size: 16px;
-    outline: none;
+.grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:9px
 }
 
-input:focus {
-    border-color: #df78ff;
+button{
+font-family:inherit
 }
 
-.styles {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin: 15px 0 25px;
+.choice{
+padding:14px 7px;
+border-radius:13px;
+border:1px solid #414055;
+background:#12121d;
+color:#ddd7e8;
+cursor:pointer
 }
 
-.style-button {
-    padding: 15px 8px;
-    border-radius: 13px;
-    border: 1px solid #414055;
-    background: #12121d;
-    color: #ddd7e8;
-    cursor: pointer;
-    font-size: 14px;
+.choice:hover,
+.choice.active{
+border-color:#e77cff;
+background:#28182e;
+color:white
 }
 
-.style-button:hover,
-.style-button.active {
-    border-color: #e77cff;
-    background: #24182b;
-    color: #fff;
+.generate{
+width:100%;
+border:0;
+border-radius:40px;
+padding:17px;
+margin-top:24px;
+background:linear-gradient(90deg,#ec72dc,#a979ff);
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer
 }
 
-.generate {
-    width: 100%;
-    border: 0;
-    border-radius: 40px;
-    padding: 17px;
-    background: linear-gradient(90deg, #ec72dc, #a979ff);
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+.results-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
 }
 
-.generate:hover {
-    transform: translateY(-2px);
-    opacity: 0.95;
+.results-head h2{
+margin:0
 }
 
-.results {
-    width: min(900px, 92%);
-    margin: 25px auto 70px;
-    padding: 30px;
-    background: rgba(18,18,29,0.9);
-    border: 1px solid #39384d;
-    border-radius: 22px;
+.copyall{
+border:1px solid #7c5a8c;
+background:#181522;
+color:#e8c8f5;
+border-radius:25px;
+padding:9px 13px;
+cursor:pointer
 }
 
-.results h2 {
-    margin-top: 0;
+.name-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:18px
 }
 
-.name-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+.name{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#151525;
+border:1px solid #29293c;
+padding:15px;
+border-radius:13px
 }
 
-.name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #151525;
-    border: 1px solid #29293c;
-    padding: 17px;
-    border-radius: 13px;
-    color: #eee;
+.copy,.heart{
+border:0;
+background:transparent;
+color:#dc8cff;
+cursor:pointer;
+font-size:18px
 }
 
-.copy {
-    border: 0;
-    background: transparent;
-    color: #dc8cff;
-    cursor: pointer;
-    font-size: 17px;
+.heart.saved{
+color:#ff8bdc
 }
 
-.features {
-    width: min(1000px, 92%);
-    margin: 0 auto 80px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    text-align: center;
+.features{
+width:min(1000px,92%);
+margin:0 auto 70px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+text-align:center
 }
 
-.feature {
-    padding: 25px;
+.feature{
+padding:22px
 }
 
-.feature-icon {
-    font-size: 35px;
+.icon{
+font-size:32px
 }
 
-.feature h3 {
-    margin-bottom: 8px;
+.feature p{
+color:#92909f;
+line-height:1.5
 }
 
-.feature p {
-    color: #92909f;
-    line-height: 1.5;
+footer{
+border-top:1px solid #252532;
+text-align:center;
+padding:28px;
+color:#777583
 }
 
-footer {
-    border-top: 1px solid #252532;
-    text-align: center;
-    padding: 30px;
-    color: #777583;
+#toast{
+position:fixed;
+bottom:25px;
+left:50%;
+transform:translateX(-50%) translateY(80px);
+background:#24202d;
+border:1px solid #76517e;
+padding:12px 18px;
+border-radius:30px;
+transition:.25s;
+z-index:20
 }
 
-@media(max-width: 700px) {
-    nav {
-        display: none;
-    }
+#toast.show{
+transform:translateX(-50%) translateY(0)
+}
 
-    .generator,
-    .results {
-        padding: 22px;
-    }
+@media(max-width:700px){
 
-    .styles {
-        grid-template-columns: repeat(2, 1fr);
-    }
+nav{display:none}
 
-    .name-list {
-        grid-template-columns: 1fr;
-    }
+.card{padding:21px}
 
-    .features {
-        grid-template-columns: 1fr;
-    }
+.grid{
+grid-template-columns:repeat(2,1fr)
+}
 
-    .hero {
-        padding-top: 45px;
-    }
+.name-list{
+grid-template-columns:1fr
+}
+
+.features{
+grid-template-columns:1fr
+}
+
+.results-head{
+align-items:flex-start;
+flex-direction:column
+}
+
 }
 </style>
 </head>
@@ -271,268 +290,560 @@ footer {
 <body>
 
 <header>
-    <div class="logo">♕ Namezy<span>.</span></div>
+<div class="logo">♕ Namezy<span>.</span></div>
 
-    <nav>
-        <a href="#">Hem</a>
-        <a href="#generator">Generator</a>
-        <a href="#results">Resultat</a>
-        <a href="#about">Om oss</a>
-    </nav>
+<nav>
+<a href="#">Hem</a>
+<a href="#generator">Generator</a>
+<a href="#results">Resultat</a>
+<a href="#about">Om oss</a>
+</nav>
 </header>
 
 <section class="hero">
 
-    <div class="small-title">✦ SKAPA DITT PERFEKTA ANVÄNDARNAMN ✦</div>
+<div class="small">
+✦ SKAPA DITT PERFEKTA ANVÄNDARNAMN ✦
+</div>
 
-    <h1>Namezy</h1>
+<h1>Namezy</h1>
 
-    <p class="subtitle">
-        Generera unika användarnamn för TikTok, Instagram,
-        Fortnite, Snapchat och mycket mer!
-    </p>
+<p class="subtitle">
+Generera unika användarnamn för TikTok, Instagram,
+Fortnite, Roblox, Discord och mycket mer!
+</p>
 
-    <div class="platforms">
-        <div class="platform">♪ TikTok</div>
-        <div class="platform">◎ Instagram</div>
-        <div class="platform">🎮 Fortnite</div>
-        <div class="platform">👻 Snapchat</div>
-        <div class="platform">✦ Gamer</div>
-    </div>
-
-</section>
-
-<section class="generator" id="generator">
-
-    <label for="word">1. Skriv in ett namn eller ord</label>
-
-    <input
-        id="word"
-        type="text"
-        placeholder="T.ex. Wilma, gaming, moon..."
-        maxlength="20"
-    >
-
-    <br><br>
-
-    <label>2. Välj stil</label>
-
-    <div class="styles">
-
-        <button class="style-button active" data-style="cute">
-            🎀 Cute
-        </button>
-
-        <button class="style-button" data-style="gamer">
-            🎮 Gamer
-        </button>
-
-        <button class="style-button" data-style="dark">
-            🌙 Dark
-        </button>
-
-        <button class="style-button" data-style="aesthetic">
-            ✨ Aesthetic
-        </button>
-
-        <button class="style-button" data-style="cool">
-            🔥 Cool
-        </button>
-
-    </div>
-
-    <button class="generate" onclick="generateNames()">
-        ✦ GENERERA
-    </button>
+<div class="platforms">
+<div class="platform">♪ TikTok</div>
+<div class="platform">◎ Instagram</div>
+<div class="platform">🎮 Fortnite</div>
+<div class="platform">🧱 Roblox</div>
+<div class="platform">💬 Discord</div>
+</div>
 
 </section>
 
-<section class="results" id="results">
 
-    <h2>⭐ Dina genererade användarnamn</h2>
+<section class="card" id="generator">
 
-    <div class="name-list" id="nameList">
+<label for="word">
+1. Skriv in ett namn eller ord
+</label>
 
-        <div class="name">
-            <span>yourname.x</span>
-            <button class="copy" onclick="copyName(this)">⧉</button>
-        </div>
+<input
+id="word"
+maxlength="20"
+placeholder="T.ex. Wilma, gaming, moon..."
+autocomplete="off"
+>
 
-        <div class="name">
-            <span>itsyourname</span>
-            <button class="copy" onclick="copyName(this)">⧉</button>
-        </div>
+<div class="section-title">
+2. Välj plattform
+</div>
 
-        <div class="name">
-            <span>yourname.exe</span>
-            <button class="copy" onclick="copyName(this)">⧉</button>
-        </div>
+<div class="grid" id="platformChoices">
 
-    </div>
+<button class="choice active" data-platform="social">
+📱 Social
+</button>
+
+<button class="choice" data-platform="fortnite">
+🎮 Fortnite
+</button>
+
+<button class="choice" data-platform="roblox">
+🧱 Roblox
+</button>
+
+<button class="choice" data-platform="discord">
+💬 Discord
+</button>
+
+<button class="choice" data-platform="any">
+✦ Alla
+</button>
+
+</div>
+
+
+<div class="section-title">
+3. Välj stil
+</div>
+
+<div class="grid" id="styleChoices">
+
+<button class="choice active" data-style="cute">
+🎀 Cute
+</button>
+
+<button class="choice" data-style="gamer">
+🎮 Gamer
+</button>
+
+<button class="choice" data-style="dark">
+🌙 Dark
+</button>
+
+<button class="choice" data-style="aesthetic">
+✨ Aesthetic
+</button>
+
+<button class="choice" data-style="cool">
+🔥 Cool
+</button>
+
+</div>
+
+
+<button class="generate" onclick="generateNames()">
+✦ GENERERA NAMN
+</button>
 
 </section>
+
+
+<section class="card" id="results">
+
+<div class="results-head">
+
+<h2>⭐ Dina namn</h2>
+
+<button class="copyall" onclick="copyAll()">
+📋 Kopiera alla
+</button>
+
+</div>
+
+<div class="name-list" id="nameList"></div>
+
+</section>
+
 
 <section class="features" id="about">
 
-    <div class="feature">
-        <div class="feature-icon">✨</div>
-        <h3>Flera stilar</h3>
-        <p>Välj mellan cute, gamer, dark, aesthetic och cool.</p>
-    </div>
+<div class="feature">
+<div class="icon">✨</div>
+<h3>Flera stilar</h3>
+<p>Hitta en stil som passar din vibe.</p>
+</div>
 
-    <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <h3>Snabbt & enkelt</h3>
-        <p>Skriv ett ord och få nya idéer på några sekunder.</p>
-    </div>
+<div class="feature">
+<div class="icon">⚡</div>
+<h3>Snabb generator</h3>
+<p>Nya namn på bara några sekunder.</p>
+</div>
 
-    <div class="feature">
-        <div class="feature-icon">♡</div>
-        <h3>Helt gratis</h3>
-        <p>Generera så många namn du vill.</p>
-    </div>
+<div class="feature">
+<div class="icon">❤️</div>
+<h3>Favoriter</h3>
+<p>Spara dina bästa namn direkt i webbläsaren.</p>
+</div>
 
 </section>
 
+
 <footer>
-    ♕ Namezy — Skapa något unikt ♡
+♕ Namezy — Skapa något unikt ♡
 </footer>
+
+<div id="toast">
+Kopierat!
+</div>
 
 
 <script>
 
-let selectedStyle = "cute";
+let selectedStyle="cute";
+let selectedPlatform="social";
+let lastNames=[];
 
-const buttons = document.querySelectorAll(".style-button");
 
-buttons.forEach(button => {
+const allStyles=[
+"cute",
+"gamer",
+"dark",
+"aesthetic",
+"cool"
+];
 
-    button.addEventListener("click", () => {
 
-        buttons.forEach(b => b.classList.remove("active"));
+document
+.querySelectorAll("#styleChoices .choice")
+.forEach(button=>{
 
-        button.classList.add("active");
+button.onclick=()=>{
 
-        selectedStyle = button.dataset.style;
+document
+.querySelectorAll("#styleChoices .choice")
+.forEach(x=>x.classList.remove("active"));
 
-    });
+button.classList.add("active");
+
+selectedStyle=button.dataset.style;
+
+};
 
 });
 
 
-function generateNames() {
+document
+.querySelectorAll("#platformChoices .choice")
+.forEach(button=>{
 
-    let word = document.getElementById("word").value.trim();
+button.onclick=()=>{
 
-    if (!word) {
-        word = "name";
-    }
+document
+.querySelectorAll("#platformChoices .choice")
+.forEach(x=>x.classList.remove("active"));
 
-    word = word.toLowerCase().replace(/\s+/g, "");
+button.classList.add("active");
 
-    let names = [];
+selectedPlatform=button.dataset.platform;
 
-    const cute = [
-        word + "baby",
-        word + "luv",
-        word + "angel",
-        "cutie" + word,
-        word + "xoxo",
-        word + "bby",
-        word + "fairy",
-        word + "sweet"
-    ];
+};
 
-    const gamer = [
-        word + "vxz",
-        word + "x",
-        word + "fps",
-        "itz" + word,
-        word + "plays",
-        word + "gg",
-        word + "clutch",
-        word + "exe"
-    ];
+});
 
-    const dark = [
-        word + ".exe",
-        word + "void",
-        "lost" + word,
-        word + "666",
-        word + "shadow",
-        "dead" + word,
-        word + "night",
-        word + "404"
-    ];
 
-    const aesthetic = [
-        word + ".luv",
-        word + "moon",
-        "its" + word,
-        word + "cloud",
-        word + "dreams",
-        word + "glow",
-        word + "star",
-        word + "xo"
-    ];
+const parts={
 
-    const cool = [
-        "x" + word,
-        word + "vx",
-        word + "wrld",
-        word + "z",
-        "real" + word,
-        word + "wave",
-        word + "zone",
-        word + "elite"
-    ];
+cute:[
+"baby","bby","luv","xoxo","angel",
+"fairy","cutie","sweet","love","bunni","doll"
+],
 
-    if (selectedStyle === "cute") names = cute;
-    if (selectedStyle === "gamer") names = gamer;
-    if (selectedStyle === "dark") names = dark;
-    if (selectedStyle === "aesthetic") names = aesthetic;
-    if (selectedStyle === "cool") names = cool;
+gamer:[
+"vx","vex","fps","gg","plays",
+"clutch","zone","pro","x","exe","yt"
+],
 
-    names = names.sort(() => Math.random() - 0.5).slice(0, 6);
+dark:[
+"void","404","shadow","night","ghost",
+"lost","noir","zero","exe","x"
+],
 
-    const list = document.getElementById("nameList");
+aesthetic:[
+"moon","cloud","glow","dream","star",
+"luv","wave","mist","xo","sky"
+],
 
-    list.innerHTML = "";
+cool:[
+"wrld","wave","elite","zone","vibe",
+"nova","rush","x","vx","z"
+]
 
-    names.forEach(name => {
+};
 
-        const div = document.createElement("div");
 
-        div.className = "name";
+function clean(text){
 
-        div.innerHTML = `
-            <span>${name}</span>
-            <button class="copy" onclick="copyName(this)">⧉</button>
-        `;
+return text
+.toLowerCase()
+.replace(/[^a-z0-9åäö]/gi,"")
+.slice(0,15)
+||"name";
 
-        list.appendChild(div);
+}
 
-    });
 
-    document.getElementById("results").scrollIntoView({
-        behavior: "smooth"
-    });
+function makePool(word,style,platform){
+
+let p=parts[style];
+
+let out=[
+
+word+p[0],
+word+"."+p[1],
+p[2]+word,
+word+"_"+p[3],
+word+p[4],
+word+"x"+p[5],
+"its"+word,
+word+"xo",
+word+"v"+p[6],
+p[7]+word,
+word+"."+p[8],
+word+"7",
+word+"11",
+word+"01",
+word+"zz"
+
+];
+
+
+if(platform==="fortnite"){
+
+out.push(
+word+"FN",
+word+"FT",
+word+"clips",
+word+"builds",
+word+"on60fps",
+word+"W"
+);
+
 }
 
 
-function copyName(button) {
+if(platform==="roblox"){
 
-    const name = button.parentElement.querySelector("span").textContent;
-
-    navigator.clipboard.writeText(name);
-
-    button.textContent = "✓";
-
-    setTimeout(() => {
-        button.textContent = "⧉";
-    }, 1200);
+out.push(
+word+"RBX",
+"its"+word+"RBX",
+word+"plays",
+word+"YT"
+);
 
 }
+
+
+if(platform==="discord"){
+
+out.push(
+word+"_",
+"x"+word,
+word+"hub"
+);
+
+}
+
+
+return [...new Set(out)];
+
+}
+
+
+function shuffle(array){
+
+return array.sort(
+()=>Math.random()-0.5
+);
+
+}
+
+
+function generateNames(){
+
+let word=clean(
+document.getElementById("word").value
+);
+
+let pool=[];
+
+
+if(selectedStyle==="any"){
+
+allStyles.forEach(style=>{
+
+pool.push(
+...makePool(
+word,
+style,
+selectedPlatform
+)
+);
+
+});
+
+}else{
+
+pool=makePool(
+word,
+selectedStyle,
+selectedPlatform
+);
+
+}
+
+
+lastNames=shuffle(
+[...new Set(pool)]
+).slice(0,10);
+
+
+render();
+
+document
+.getElementById("results")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function render(){
+
+const list=
+document.getElementById("nameList");
+
+list.innerHTML="";
+
+let favorites=
+JSON.parse(
+localStorage.getItem("namezyFav")||"[]"
+);
+
+
+lastNames.forEach(name=>{
+
+const div=
+document.createElement("div");
+
+div.className="name";
+
+const saved=
+favorites.includes(name);
+
+
+div.innerHTML=`
+
+<span>${name}</span>
+
+<span>
+
+<button
+class="heart ${saved?"saved":""}"
+onclick="toggleFav(this,'${name}')"
+>
+♥
+</button>
+
+<button
+class="copy"
+onclick="copyText('${name}',this)"
+>
+⧉
+</button>
+
+</span>
+
+`;
+
+
+list.appendChild(div);
+
+});
+
+}
+
+
+function toggleFav(button,name){
+
+let favorites=
+JSON.parse(
+localStorage.getItem("namezyFav")||"[]"
+);
+
+
+if(favorites.includes(name)){
+
+favorites=
+favorites.filter(x=>x!==name);
+
+}else{
+
+favorites.push(name);
+
+}
+
+
+localStorage.setItem(
+"namezyFav",
+JSON.stringify(favorites)
+);
+
+button.classList.toggle(
+"saved"
+);
+
+showToast(
+favorites.includes(name)
+?"Sparat i favoriter!"
+:"Borttagen från favoriter"
+);
+
+}
+
+
+async function copyText(name,button){
+
+try{
+
+await navigator.clipboard.writeText(name);
+
+button.textContent="✓";
+
+setTimeout(
+()=>button.textContent="⧉",
+1000
+);
+
+showToast("Kopierat!");
+
+}catch(error){
+
+showToast(
+"Kunde inte kopiera automatiskt"
+);
+
+}
+
+}
+
+
+async function copyAll(){
+
+if(!lastNames.length){
+
+showToast(
+"Generera namn först!"
+);
+
+return;
+
+}
+
+
+try{
+
+await navigator.clipboard.writeText(
+lastNames.join("\n")
+);
+
+showToast(
+"Alla namn kopierade!"
+);
+
+}catch(error){
+
+showToast(
+"Kunde inte kopiera automatiskt"
+);
+
+}
+
+}
+
+
+function showToast(text){
+
+const toast=
+document.getElementById("toast");
+
+toast.textContent=text;
+
+toast.classList.add("show");
+
+setTimeout(
+()=>toast.classList.remove("show"),
+1500
+);
+
+}
+
+
+generateNames();
 
 </script>
 
