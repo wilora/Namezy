@@ -453,395 +453,150 @@ Kopierat!
 
 <script>
 
-let selectedStyle="cute";
-let selectedPlatform="social";
-let lastNames=[];
+const nameParts = {
+  cute: [
+    "angel", "bunny", "dolly", "fairy", "honey", "lily",
+    "peach", "bloom", "sweet", "lovely", "baby", "cherry",
+    "cloud", "pink", "star", "rosie", "dreamy", "cutie"
+  ],
 
+  gamer: [
+    "x", "shadow", "ghost", "venom", "nexus", "storm",
+    "zero", "viper", "frost", "blaze", "phantom", "nova",
+    "reaper", "raven", "clutch", "sniper", "pixel", "legend"
+  ],
 
-const allStyles=[
-"cute",
-"gamer",
-"dark",
-"aesthetic",
-"cool"
+  dark: [
+    "void", "dark", "lost", "night", "dead", "sin",
+    "lunar", "demon", "grim", "shade", "black", "noir",
+    "blood", "midnight", "hollow", "obsidian"
+  ],
+
+  aesthetic: [
+    "luna", "muse", "velvet", "ivory", "venus", "aurora",
+    "eden", "opal", "serene", "swan", "silk", "moon",
+    "cloudy", "flora", "celeste", "dream"
+  ],
+
+  cool: [
+    "vibe", "wave", "rush", "drip", "flex", "elite",
+    "prime", "icy", "wild", "rare", "fresh", "icon",
+    "famous", "viral", "supreme", "legend"
+  ]
+};
+
+const endings = [
+  "xo", "xx", "xoxo", "v", "z", "zy", "qt",
+  "777", "999", "444", "11", "22", "01",
+  "01", "x1", "7x", "zz"
 ];
 
+function randomItem(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
 
-document
-.querySelectorAll("#styleChoices .choice")
-.forEach(button=>{
+function createUsername(input, style) {
+  const base = input
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]/g, "");
 
-button.onclick=()=>{
+  const words = nameParts[style] || nameParts.cute;
+  const word = randomItem(words);
+  const ending = randomItem(endings);
 
-document
-.querySelectorAll("#styleChoices .choice")
-.forEach(x=>x.classList.remove("active"));
+  const variations = [
+    base + word,
+    word + base,
+    base + ending,
+    word + ending,
+    base + word + ending,
+    word + base + ending,
+    base + "_" + word,
+    word + "_" + base,
+    base + "." + word,
+    word + "." + ending
+  ];
 
-button.classList.add("active");
+  return randomItem(variations);
+}
 
-selectedStyle=button.dataset.style;
+function generateNames() {
+  const input = document.querySelector("input");
 
-};
+  if (!input || !input.value.trim()) {
+    showToast("Skriv in ett namn först!");
+    return;
+  }
 
+  const styleButton = document.querySelector(
+    "#styleChoices .choice.active"
+  );
+
+  const style =
+    styleButton?.dataset?.style || "cute";
+
+  const results = [];
+  const used = new Set();
+
+  while (results.length < 8) {
+    const username = createUsername(input.value, style);
+
+    if (!used.has(username)) {
+      used.add(username);
+      results.push(username);
+    }
+  }
+
+  const resultElements = document.querySelectorAll(
+    ".result, .name-result, [data-result]"
+  );
+
+  resultElements.forEach((element, index) => {
+    if (results[index]) {
+      element.textContent = results[index];
+    }
+  });
+
+  if (resultElements.length === 0) {
+    console.log("Namn:", results);
+  }
+}
+
+function showToast(text) {
+  const toast = document.querySelector("#toast");
+
+  if (!toast) return;
+
+  toast.textContent = text;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1500);
+}
+
+document.querySelectorAll("#styleChoices .choice").forEach(button => {
+  button.addEventListener("click", () => {
+    document
+      .querySelectorAll("#styleChoices .choice")
+      .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+  });
 });
 
+document.querySelectorAll("button").forEach(button => {
+  const text = button.textContent.toLowerCase();
 
-document
-.querySelectorAll("#platformChoices .choice")
-.forEach(button=>{
-
-button.onclick=()=>{
-
-document
-.querySelectorAll("#platformChoices .choice")
-.forEach(x=>x.classList.remove("active"));
-
-button.classList.add("active");
-
-selectedPlatform=button.dataset.platform;
-
-};
-
+  if (
+    text.includes("generera") ||
+    text.includes("generate") ||
+    text.includes("skapa")
+  ) {
+    button.addEventListener("click", generateNames);
+  }
 });
-
-
-const parts={
-
-cute:[
-"baby","bby","luv","xoxo","angel",
-"fairy","cutie","sweet","love","bunni","doll"
-],
-
-gamer:[
-"vx","vex","fps","gg","plays",
-"clutch","zone","pro","x","exe","yt"
-],
-
-dark:[
-"void","404","shadow","night","ghost",
-"lost","noir","zero","exe","x"
-],
-
-aesthetic:[
-"moon","cloud","glow","dream","star",
-"luv","wave","mist","xo","sky"
-],
-
-cool:[
-"wrld","wave","elite","zone","vibe",
-"nova","rush","x","vx","z"
-]
-
-};
-
-
-function clean(text){
-
-return text
-.toLowerCase()
-.replace(/[^a-z0-9åäö]/gi,"")
-.slice(0,15)
-||"name";
-
-}
-
-
-function makePool(word,style,platform){
-
-let p=parts[style];
-
-let out=[
-
-word+p[0],
-word+"."+p[1],
-p[2]+word,
-word+"_"+p[3],
-word+p[4],
-word+"x"+p[5],
-"its"+word,
-word+"xo",
-word+"v"+p[6],
-p[7]+word,
-word+"."+p[8],
-word+"7",
-word+"11",
-word+"01",
-word+"zz"
-
-];
-
-
-if(platform==="fortnite"){
-
-out.push(
-word+"FN",
-word+"FT",
-word+"clips",
-word+"builds",
-word+"on60fps",
-word+"W"
-);
-
-}
-
-
-if(platform==="roblox"){
-
-out.push(
-word+"RBX",
-"its"+word+"RBX",
-word+"plays",
-word+"YT"
-);
-
-}
-
-
-if(platform==="discord"){
-
-out.push(
-word+"_",
-"x"+word,
-word+"hub"
-);
-
-}
-
-
-return [...new Set(out)];
-
-}
-
-
-function shuffle(array){
-
-return array.sort(
-()=>Math.random()-0.5
-);
-
-}
-
-
-function generateNames(){
-
-let word=clean(
-document.getElementById("word").value
-);
-
-let pool=[];
-
-
-if(selectedStyle==="any"){
-
-allStyles.forEach(style=>{
-
-pool.push(
-...makePool(
-word,
-style,
-selectedPlatform
-)
-);
-
-});
-
-}else{
-
-pool=makePool(
-word,
-selectedStyle,
-selectedPlatform
-);
-
-}
-
-
-lastNames=shuffle(
-[...new Set(pool)]
-).slice(0,10);
-
-
-render();
-
-document
-.getElementById("results")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-function render(){
-
-const list=
-document.getElementById("nameList");
-
-list.innerHTML="";
-
-let favorites=
-JSON.parse(
-localStorage.getItem("namezyFav")||"[]"
-);
-
-
-lastNames.forEach(name=>{
-
-const div=
-document.createElement("div");
-
-div.className="name";
-
-const saved=
-favorites.includes(name);
-
-
-div.innerHTML=`
-
-<span>${name}</span>
-
-<span>
-
-<button
-class="heart ${saved?"saved":""}"
-onclick="toggleFav(this,'${name}')"
->
-♥
-</button>
-
-<button
-class="copy"
-onclick="copyText('${name}',this)"
->
-⧉
-</button>
-
-</span>
-
-`;
-
-
-list.appendChild(div);
-
-});
-
-}
-
-
-function toggleFav(button,name){
-
-let favorites=
-JSON.parse(
-localStorage.getItem("namezyFav")||"[]"
-);
-
-
-if(favorites.includes(name)){
-
-favorites=
-favorites.filter(x=>x!==name);
-
-}else{
-
-favorites.push(name);
-
-}
-
-
-localStorage.setItem(
-"namezyFav",
-JSON.stringify(favorites)
-);
-
-button.classList.toggle(
-"saved"
-);
-
-showToast(
-favorites.includes(name)
-?"Sparat i favoriter!"
-:"Borttagen från favoriter"
-);
-
-}
-
-
-async function copyText(name,button){
-
-try{
-
-await navigator.clipboard.writeText(name);
-
-button.textContent="✓";
-
-setTimeout(
-()=>button.textContent="⧉",
-1000
-);
-
-showToast("Kopierat!");
-
-}catch(error){
-
-showToast(
-"Kunde inte kopiera automatiskt"
-);
-
-}
-
-}
-
-
-async function copyAll(){
-
-if(!lastNames.length){
-
-showToast(
-"Generera namn först!"
-);
-
-return;
-
-}
-
-
-try{
-
-await navigator.clipboard.writeText(
-lastNames.join("\n")
-);
-
-showToast(
-"Alla namn kopierade!"
-);
-
-}catch(error){
-
-showToast(
-"Kunde inte kopiera automatiskt"
-);
-
-}
-
-}
-
-
-function showToast(text){
-
-const toast=
-document.getElementById("toast");
-
-toast.textContent=text;
-
-toast.classList.add("show");
-
-setTimeout(
-()=>toast.classList.remove("show"),
-1500
-);
-
-}
-
 
 generateNames();
 
