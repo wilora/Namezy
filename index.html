@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#0b0710">
+<meta name="theme-color" content="#09070d">
 
-<title>Namezy – Username Generator</title>
+<title>Namezy – Gratis Username Generator</title>
 
 <meta name="description"
-content="Namezy – skapa unika användarnamn för TikTok, Instagram, Fortnite, Roblox och Discord.">
+content="Skapa coola, söta och unika användarnamn för TikTok, Instagram, Fortnite, Roblox och Discord med Namezy.">
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -20,12 +21,11 @@ padding:0;
 :root{
 --bg:#09070d;
 --card:#15101d;
---card2:#1b1424;
 --border:rgba(255,255,255,.11);
 --text:#fff;
 --muted:#a99eb2;
 --pink:#e58cff;
---purple:#a94dff;
+--purple:#a84cff;
 }
 
 html{
@@ -39,34 +39,34 @@ background:
 radial-gradient(circle at 50% -10%,rgba(214,105,255,.25),transparent 35%),
 radial-gradient(circle at 100% 35%,rgba(129,48,196,.15),transparent 30%),
 #09070d;
-color:var(--text);
+color:#fff;
 overflow-x:hidden;
 }
 
-button,input,select{
+button,input{
 font:inherit;
 }
 
 button{
-cursor:pointer;
 border:0;
+cursor:pointer;
 }
 
 .container{
-width:min(100% - 28px,1050px);
+width:min(100% - 22px,1050px);
 margin:auto;
 }
 
 /* HEADER */
 
 header{
-padding:22px 0 10px;
+padding:20px 0 8px;
 }
 
 .nav{
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
 }
 
 .logo{
@@ -87,11 +87,10 @@ font-size:26px;
 }
 
 .badge{
-padding:8px 14px;
+padding:8px 13px;
 border:1px solid var(--border);
 border-radius:999px;
 background:rgba(255,255,255,.04);
-color:#d9c9df;
 font-size:12px;
 font-weight:700;
 }
@@ -100,23 +99,22 @@ font-weight:700;
 
 .hero{
 text-align:center;
-padding:65px 0 32px;
+padding:60px 0 30px;
 }
 
 .eyebrow{
-display:inline-flex;
 color:var(--pink);
-font-size:13px;
+font-size:12px;
 font-weight:900;
-letter-spacing:4px;
-margin-bottom:18px;
+letter-spacing:3px;
+margin-bottom:17px;
 }
 
 .hero h1{
-font-size:clamp(55px,11vw,92px);
+font-size:clamp(55px,12vw,92px);
 line-height:.92;
 letter-spacing:-5px;
-background:linear-gradient(135deg,#fff,#f0a5ff 48%,#a94dff);
+background:linear-gradient(135deg,#fff,#f0a5ff,#a94dff);
 -webkit-background-clip:text;
 background-clip:text;
 color:transparent;
@@ -124,33 +122,27 @@ color:transparent;
 
 .hero p{
 max-width:680px;
-margin:23px auto 0;
+margin:22px auto 0;
 color:var(--muted);
 font-size:17px;
 line-height:1.6;
 }
 
-.quickPlatforms{
+.quick{
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
-gap:9px;
-margin-top:27px;
+flex-wrap:wrap;
+gap:8px;
+margin-top:25px;
 }
 
-.quickPlatform{
-padding:11px 17px;
+.quick button{
+padding:11px 15px;
 border-radius:999px;
-border:1px solid rgba(255,255,255,.15);
 background:#11101a;
+border:1px solid rgba(255,255,255,.14);
 color:#ddd4e1;
 font-weight:700;
-transition:.2s;
-}
-
-.quickPlatform:hover{
-transform:translateY(-2px);
-border-color:var(--pink);
 }
 
 /* GENERATOR */
@@ -158,26 +150,24 @@ border-color:var(--pink);
 .generator{
 background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
 border:1px solid var(--border);
-border-radius:28px;
-padding:22px;
+border-radius:25px;
+padding:17px;
 box-shadow:0 25px 70px rgba(0,0,0,.4);
-backdrop-filter:blur(20px);
 }
 
 .label{
 display:block;
 font-size:14px;
 font-weight:900;
-color:#e7ddea;
-margin-bottom:10px;
+margin-bottom:9px;
 }
 
 .input{
 width:100%;
-padding:18px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.14);
+padding:17px;
+border-radius:15px;
 background:#0d0a13;
+border:1px solid rgba(255,255,255,.14);
 color:#fff;
 outline:none;
 }
@@ -192,7 +182,7 @@ color:#665d6d;
 }
 
 .sectionTitle{
-margin:25px 0 12px;
+margin:23px 0 11px;
 font-size:14px;
 font-weight:900;
 }
@@ -200,18 +190,17 @@ font-weight:900;
 .choices{
 display:grid;
 grid-template-columns:repeat(5,1fr);
-gap:9px;
+gap:8px;
 }
 
 .choice,
 .platform{
-padding:14px 8px;
-border-radius:14px;
-border:1px solid var(--border);
+padding:13px 7px;
+border-radius:13px;
 background:#100c16;
+border:1px solid var(--border);
 color:#bcb0c4;
 font-weight:750;
-transition:.2s;
 }
 
 .choice.active,
@@ -219,125 +208,72 @@ transition:.2s;
 background:rgba(229,140,255,.14);
 color:#fff;
 border-color:var(--pink);
-box-shadow:0 0 20px rgba(229,140,255,.08);
 }
 
 .platforms{
 display:grid;
 grid-template-columns:repeat(5,1fr);
-gap:9px;
+gap:8px;
 }
 
 .options{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:24px;
+gap:9px;
+margin-top:22px;
 }
 
-.optionBox{
+.option{
 background:#100c16;
 border:1px solid var(--border);
-border-radius:14px;
-padding:13px;
+border-radius:13px;
+padding:12px;
 }
 
-.optionLabel{
+.option label{
 display:block;
-color:#9e92a6;
-font-size:11px;
+color:#95899d;
+font-size:10px;
 font-weight:800;
-margin-bottom:7px;
+margin-bottom:6px;
 }
 
-.optionSelect{
+select{
 width:100%;
-padding:10px;
-border-radius:10px;
-border:1px solid var(--border);
+padding:9px;
+border-radius:9px;
 background:#17111e;
+border:1px solid var(--border);
 color:#fff;
 outline:none;
 }
 
 .generate{
 width:100%;
-margin-top:22px;
-padding:18px;
-border-radius:16px;
+padding:17px;
+margin-top:20px;
+border-radius:15px;
 background:linear-gradient(135deg,#e58cff,#a84cff);
 color:#fff;
-font-size:17px;
+font-size:16px;
 font-weight:900;
-box-shadow:0 13px 35px rgba(184,92,255,.27);
-transition:.2s;
+box-shadow:0 12px 30px rgba(184,92,255,.28);
 }
 
-.generate:hover{
-transform:translateY(-2px);
-}
-
-/* BEST MATCH */
-
-.best{
-margin-top:25px;
-display:none;
-}
-
-.best.show{
-display:block;
-}
-
-.bestTitle{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:12px;
-}
-
-.bestTitle h2{
-font-size:21px;
-}
-
-.bestBadge{
-padding:6px 9px;
-border-radius:8px;
-background:rgba(229,140,255,.12);
-color:var(--pink);
-font-size:10px;
-font-weight:900;
-}
-
-.bestGrid{
+.secondaryButtons{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:9px;
 }
 
-.bestCard{
-padding:18px;
-border-radius:18px;
-border:1px solid rgba(229,140,255,.28);
-background:linear-gradient(145deg,rgba(229,140,255,.12),rgba(255,255,255,.035));
-}
-
-.bestNumber{
-color:var(--pink);
-font-size:11px;
-font-weight:900;
-margin-bottom:8px;
-}
-
-.bestName{
-font-size:18px;
-font-weight:900;
-word-break:break-all;
-}
-
-.bestScore{
-margin-top:7px;
-color:#a99eb2;
-font-size:11px;
+.secondary{
+padding:13px;
+border-radius:13px;
+background:#17111f;
+border:1px solid var(--border);
+color:#ddd4e2;
+font-weight:800;
 }
 
 /* RESULTS */
@@ -347,60 +283,65 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 gap:10px;
-margin:32px 0 13px;
+margin:30px 0 12px;
 }
 
 .resultsHeader h2{
 font-size:21px;
 }
 
-.headerRight{
+.right{
 display:flex;
 align-items:center;
-gap:8px;
+gap:7px;
 }
 
 .count{
 color:var(--muted);
-font-size:13px;
+font-size:12px;
 }
 
 .copyAll{
-padding:9px 13px;
+padding:8px 11px;
+border-radius:9px;
 background:#17101f;
-color:#ddd3e2;
 border:1px solid var(--border);
-border-radius:10px;
-font-size:12px;
+color:#ddd3e2;
+font-size:11px;
 font-weight:800;
+}
+
+.search{
+width:100%;
+padding:13px;
+margin-bottom:10px;
+border-radius:12px;
+background:#100c16;
+border:1px solid var(--border);
+color:#fff;
+outline:none;
 }
 
 .results{
 display:grid;
-gap:10px;
+gap:9px;
 }
 
 .nameCard{
 display:flex;
 align-items:center;
-gap:12px;
-padding:15px;
+gap:10px;
+padding:14px;
 background:rgba(255,255,255,.045);
 border:1px solid var(--border);
-border-radius:17px;
-animation:fadeUp .35s ease both;
-transition:.2s;
+border-radius:16px;
+animation:up .3s ease both;
 }
 
-.nameCard:hover{
-transform:translateY(-2px);
-border-color:rgba(229,140,255,.3);
-}
-
-@keyframes fadeUp{
+@keyframes up{
 from{
 opacity:0;
-transform:translateY(8px);
+transform:translateY(7px);
 }
 to{
 opacity:1;
@@ -414,44 +355,32 @@ min-width:0;
 }
 
 .name{
-font-size:17px;
-font-weight:850;
+font-size:16px;
+font-weight:900;
 word-break:break-all;
 }
 
 .meta{
-margin-top:5px;
+margin-top:4px;
+font-size:10px;
 color:#817688;
-font-size:11px;
-}
-
-.scoreRow{
-display:flex;
-align-items:center;
-gap:8px;
-margin-top:7px;
 }
 
 .score{
-color:#d79cff;
+margin-top:6px;
 font-size:10px;
 font-weight:900;
-}
-
-.popular{
-color:#8edb9d;
-font-size:10px;
-font-weight:800;
+color:#d79cff;
 }
 
 .cardBtn{
-width:43px;
-height:43px;
-border-radius:12px;
+width:41px;
+height:41px;
+border-radius:11px;
 background:#21182a;
-color:#fff;
 border:1px solid var(--border);
-font-size:17px;
+color:#fff;
+font-size:16px;
 flex-shrink:0;
 }
 
@@ -460,11 +389,71 @@ color:#ff78c8;
 border-color:#ff78c8;
 }
 
+/* BEST */
+
+.best{
+display:none;
+margin-top:24px;
+}
+
+.best.show{
+display:block;
+}
+
+.bestHeader{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:11px;
+}
+
+.bestHeader h2{
+font-size:20px;
+}
+
+.bestTag{
+color:var(--pink);
+font-size:10px;
+font-weight:900;
+}
+
+.bestGrid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:9px;
+}
+
+.bestCard{
+padding:16px;
+border-radius:16px;
+background:linear-gradient(145deg,rgba(229,140,255,.13),rgba(255,255,255,.035));
+border:1px solid rgba(229,140,255,.28);
+}
+
+.bestRank{
+font-size:10px;
+color:var(--pink);
+font-weight:900;
+margin-bottom:7px;
+}
+
+.bestName{
+font-size:17px;
+font-weight:900;
+word-break:break-all;
+}
+
+.bestScore{
+font-size:10px;
+color:#9e92a6;
+margin-top:6px;
+}
+
 /* FAVORITES */
 
 .favorites{
-margin-top:26px;
 display:none;
+margin-top:25px;
 }
 
 .favorites.show{
@@ -474,18 +463,18 @@ display:block;
 .favoriteList{
 display:flex;
 flex-wrap:wrap;
-gap:8px;
+gap:7px;
 }
 
 .favoriteItem{
 display:flex;
 align-items:center;
-gap:8px;
-padding:10px 12px;
-border-radius:12px;
+gap:7px;
+padding:9px 11px;
+border-radius:11px;
 background:#17101e;
 border:1px solid var(--border);
-font-size:13px;
+font-size:12px;
 }
 
 .favoriteItem button{
@@ -496,133 +485,131 @@ font-size:15px;
 
 /* TRENDING */
 
-.trending{
-padding:75px 0 30px;
+.section{
+padding:65px 0 20px;
 }
 
 .sectionHead{
 text-align:center;
-margin-bottom:24px;
+margin-bottom:22px;
 }
 
 .sectionHead h2{
-font-size:32px;
+font-size:30px;
 }
 
 .sectionHead p{
-margin-top:8px;
 color:var(--muted);
+margin-top:7px;
+font-size:14px;
 }
 
-.trendingGrid{
+.trending{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:10px;
+gap:9px;
 }
 
 .trend{
-padding:17px;
-border:1px solid var(--border);
+padding:16px;
 background:rgba(255,255,255,.035);
-border-radius:17px;
+border:1px solid var(--border);
+border-radius:16px;
 }
 
 .trendTop{
 display:flex;
 justify-content:space-between;
-align-items:center;
 margin-bottom:8px;
 }
 
 .trendName{
-font-weight:850;
-font-size:16px;
+font-weight:900;
 }
 
-.trendRank{
+.rank{
 color:var(--pink);
 font-size:11px;
 font-weight:900;
 }
 
-.trendBar{
+.bar{
 height:5px;
-border-radius:10px;
 background:#211827;
+border-radius:9px;
 overflow:hidden;
 }
 
-.trendBar span{
+.bar span{
 display:block;
 height:100%;
-width:var(--width);
+width:var(--w);
 background:linear-gradient(90deg,#e58cff,#a84cff);
-border-radius:10px;
 }
 
 /* FEATURES */
 
 .features{
-padding:65px 0;
+padding:60px 0;
 }
 
-.featureGrid{
+.featuresGrid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:13px;
+gap:10px;
 }
 
 .feature{
-padding:23px;
-border-radius:20px;
+padding:21px;
+border-radius:18px;
 background:rgba(255,255,255,.035);
 border:1px solid var(--border);
 }
 
 .featureIcon{
-font-size:26px;
-margin-bottom:13px;
+font-size:25px;
+margin-bottom:12px;
 }
 
 .feature h3{
-font-size:16px;
-margin-bottom:7px;
+font-size:15px;
+margin-bottom:6px;
 }
 
 .feature p{
 color:var(--muted);
-font-size:13px;
+font-size:12px;
 line-height:1.55;
 }
 
 /* INFO */
 
 .info{
-padding:0 0 60px;
+padding-bottom:55px;
 }
 
 .infoBox{
-padding:27px;
-border-radius:22px;
+padding:24px;
+border-radius:20px;
 background:rgba(255,255,255,.025);
 border:1px solid var(--border);
 }
 
 .infoBox h2{
-font-size:22px;
-margin-bottom:12px;
+font-size:21px;
+margin-bottom:10px;
 }
 
 .infoBox h3{
-font-size:16px;
-margin-top:20px;
-margin-bottom:7px;
+font-size:15px;
+margin-top:18px;
+margin-bottom:6px;
 }
 
 .infoBox p{
 color:var(--muted);
-font-size:14px;
-line-height:1.65;
+font-size:13px;
+line-height:1.6;
 }
 
 /* TOAST */
@@ -630,14 +617,14 @@ line-height:1.65;
 .toast{
 position:fixed;
 left:50%;
-bottom:25px;
+bottom:22px;
 transform:translate(-50%,30px);
+padding:11px 17px;
+border-radius:999px;
 background:#fff;
 color:#120b18;
-padding:12px 18px;
-border-radius:999px;
-font-size:13px;
-font-weight:850;
+font-size:12px;
+font-weight:900;
 opacity:0;
 pointer-events:none;
 transition:.25s;
@@ -651,9 +638,9 @@ transform:translate(-50%,0);
 
 footer{
 text-align:center;
-padding:20px 0 38px;
+padding:20px 0 35px;
 color:#756a7c;
-font-size:12px;
+font-size:11px;
 }
 
 /* MOBILE */
@@ -669,11 +656,11 @@ display:none;
 }
 
 .hero{
-padding:54px 0 30px;
+padding:52px 0 28px;
 }
 
 .hero h1{
-font-size:58px;
+font-size:57px;
 letter-spacing:-3px;
 }
 
@@ -681,14 +668,13 @@ letter-spacing:-3px;
 font-size:15px;
 }
 
-.quickPlatform{
-padding:10px 13px;
-font-size:13px;
+.quick button{
+font-size:12px;
+padding:9px 12px;
 }
 
 .generator{
-padding:16px;
-border-radius:22px;
+border-radius:21px;
 }
 
 .choices{
@@ -711,16 +697,12 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
-.trendingGrid{
+.trending{
 grid-template-columns:1fr;
 }
 
-.featureGrid{
+.featuresGrid{
 grid-template-columns:1fr;
-}
-
-.features{
-padding:55px 0;
 }
 
 .resultsHeader{
@@ -733,34 +715,38 @@ margin-left:auto;
 
 }
 
-/* EXTRA SMALL */
+/* SMALL */
 
 @media(max-width:390px){
 
 .logo{
-font-size:24px;
+font-size:23px;
 }
 
 .hero h1{
-font-size:52px;
+font-size:51px;
 }
 
 .name{
-font-size:15px;
+font-size:14px;
 }
 
 .cardBtn{
-width:39px;
-height:39px;
+width:38px;
+height:38px;
 }
 
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <header>
+
 <div class="container">
 
 <div class="nav">
@@ -777,12 +763,12 @@ Name<span>zy.</span>
 </div>
 
 </div>
+
 </header>
 
 
 <main>
 
-<!-- HERO -->
 
 <section class="hero">
 
@@ -796,31 +782,16 @@ Name<span>zy.</span>
 
 <p>
 Hitta ditt nästa användarnamn på några sekunder.
-Skapa namn för TikTok, Instagram, Fortnite,
-Roblox, Discord och gaming.
+Skapa unika namn för sociala medier och gaming.
 </p>
 
-<div class="quickPlatforms">
+<div class="quick">
 
-<button class="quickPlatform" data-quick="tiktok">
-♪ TikTok
-</button>
-
-<button class="quickPlatform" data-quick="instagram">
-◎ Instagram
-</button>
-
-<button class="quickPlatform" data-quick="fortnite">
-🎮 Fortnite
-</button>
-
-<button class="quickPlatform" data-quick="roblox">
-🧱 Roblox
-</button>
-
-<button class="quickPlatform" data-quick="discord">
-💬 Discord
-</button>
+<button data-quick="tiktok">♪ TikTok</button>
+<button data-quick="instagram">◎ Instagram</button>
+<button data-quick="fortnite">🎮 Fortnite</button>
+<button data-quick="roblox">🧱 Roblox</button>
+<button data-quick="discord">💬 Discord</button>
 
 </div>
 
@@ -828,8 +799,6 @@ Roblox, Discord och gaming.
 
 </section>
 
-
-<!-- GENERATOR -->
 
 <section>
 
@@ -854,7 +823,7 @@ autocomplete="off"
 2. Välj stil
 </div>
 
-<div class="choices" id="styleChoices">
+<div class="choices" id="styles">
 
 <button class="choice active" data-style="cute">
 🎀 Cute
@@ -883,7 +852,7 @@ autocomplete="off"
 3. Välj plattform
 </div>
 
-<div class="platforms" id="platformChoices">
+<div class="platforms" id="platforms">
 
 <button class="platform active" data-platform="tiktok">
 ♪ TikTok
@@ -914,50 +883,34 @@ autocomplete="off"
 
 <div class="options">
 
-<div class="optionBox">
+<div class="option">
 
-<label class="optionLabel">
+<label>
 NAMNLÄNGD
 </label>
 
-<select class="optionSelect" id="length">
+<select id="length">
 
-<option value="short">
-Kort
-</option>
-
-<option value="medium" selected>
-Medium
-</option>
-
-<option value="long">
-Lång
-</option>
+<option value="short">Kort</option>
+<option value="medium" selected>Medium</option>
+<option value="long">Lång</option>
 
 </select>
 
 </div>
 
 
-<div class="optionBox">
+<div class="option">
 
-<label class="optionLabel">
+<label>
 SIFFROR
 </label>
 
-<select class="optionSelect" id="numbers">
+<select id="numbers">
 
-<option value="some" selected>
-Ibland
-</option>
-
-<option value="none">
-Inga
-</option>
-
-<option value="many">
-Många
-</option>
+<option value="some" selected>Ibland</option>
+<option value="none">Inga</option>
+<option value="many">Många</option>
 
 </select>
 
@@ -970,21 +923,32 @@ Många
 ✨ Generera användarnamn
 </button>
 
+
+<div class="secondaryButtons">
+
+<button class="secondary" id="random">
+🎲 Slumpa
+</button>
+
+<button class="secondary" id="share">
+📤 Dela Namezy
+</button>
+
+</div>
+
 </div>
 
 
 <!-- BEST MATCH -->
 
-<div class="best" id="bestSection">
+<div class="best" id="best">
 
-<div class="bestTitle">
+<div class="bestHeader">
 
-<h2>
-🏆 Best Match
-</h2>
+<h2>🏆 Best Match</h2>
 
-<div class="bestBadge">
-TOP PICKS
+<div class="bestTag">
+TOP 3
 </div>
 
 </div>
@@ -998,13 +962,11 @@ TOP PICKS
 
 <div class="resultsHeader">
 
-<h2>
-✨ Dina namn
-</h2>
+<h2>✨ Dina namn</h2>
 
-<div class="headerRight">
+<div class="right">
 
-<span class="count" id="resultCount">
+<span class="count" id="count">
 0 namn
 </span>
 
@@ -1016,18 +978,25 @@ TOP PICKS
 
 </div>
 
+
+<input
+id="search"
+class="search"
+placeholder="🔎 Sök bland resultaten..."
+autocomplete="off"
+/>
+
+
 <div class="results" id="results"></div>
 
 
 <!-- FAVORITES -->
 
-<div class="favorites" id="favoritesSection">
+<div class="favorites" id="favorites">
 
 <div class="resultsHeader">
 
-<h2>
-❤️ Dina favoriter
-</h2>
+<h2>❤️ Dina favoriter</h2>
 
 </div>
 
@@ -1042,62 +1011,35 @@ TOP PICKS
 
 <!-- TRENDING -->
 
-<section class="trending">
+<section class="section">
 
 <div class="container">
 
 <div class="sectionHead">
 
-<h2>
-🔥 Trending Names
-</h2>
+<h2>🔥 Trending Names</h2>
 
 <p>
-Namnstilar som är extra populära just nu.
+Populära namnidéer på Namezy.
 </p>
 
 </div>
 
 
-<div class="trendingGrid">
+<div class="trending">
 
 <div class="trend">
 
 <div class="trendTop">
 
-<div class="trendName">
-vexzy
-</div>
+<div class="trendName">vexzy</div>
 
-<div class="trendRank">
-#1
-</div>
+<div class="rank">#1</div>
 
 </div>
 
-<div class="trendBar">
-<span style="--width:96%"></span>
-</div>
-
-</div>
-
-
-<div class="trend">
-
-<div class="trendTop">
-
-<div class="trendName">
-lunavx
-</div>
-
-<div class="trendRank">
-#2
-</div>
-
-</div>
-
-<div class="trendBar">
-<span style="--width:91%"></span>
+<div class="bar">
+<span style="--w:96%"></span>
 </div>
 
 </div>
@@ -1107,18 +1049,14 @@ lunavx
 
 <div class="trendTop">
 
-<div class="trendName">
-itsnova
-</div>
+<div class="trendName">lunavx</div>
 
-<div class="trendRank">
-#3
-</div>
+<div class="rank">#2</div>
 
 </div>
 
-<div class="trendBar">
-<span style="--width:87%"></span>
+<div class="bar">
+<span style="--w:92%"></span>
 </div>
 
 </div>
@@ -1128,18 +1066,14 @@ itsnova
 
 <div class="trendTop">
 
-<div class="trendName">
-wilmavx
-</div>
+<div class="trendName">itsnova</div>
 
-<div class="trendRank">
-#4
-</div>
+<div class="rank">#3</div>
 
 </div>
 
-<div class="trendBar">
-<span style="--width:82%"></span>
+<div class="bar">
+<span style="--w:88%"></span>
 </div>
 
 </div>
@@ -1149,18 +1083,14 @@ wilmavx
 
 <div class="trendTop">
 
-<div class="trendName">
-ghostszn
-</div>
+<div class="trendName">wilmavx</div>
 
-<div class="trendRank">
-#5
-</div>
+<div class="rank">#4</div>
 
 </div>
 
-<div class="trendBar">
-<span style="--width:77%"></span>
+<div class="bar">
+<span style="--w:84%"></span>
 </div>
 
 </div>
@@ -1170,18 +1100,31 @@ ghostszn
 
 <div class="trendTop">
 
-<div class="trendName">
-softluna
-</div>
+<div class="trendName">ghostszn</div>
 
-<div class="trendRank">
-#6
-</div>
+<div class="rank">#5</div>
 
 </div>
 
-<div class="trendBar">
-<span style="--width:72%"></span>
+<div class="bar">
+<span style="--w:79%"></span>
+</div>
+
+</div>
+
+
+<div class="trend">
+
+<div class="trendTop">
+
+<div class="trendName">softluna</div>
+
+<div class="rank">#6</div>
+
+</div>
+
+<div class="bar">
+<span style="--w:74%"></span>
 </div>
 
 </div>
@@ -1201,31 +1144,25 @@ softluna
 
 <div class="sectionHead">
 
-<h2>
-Varför Namezy?
-</h2>
+<h2>Varför Namezy?</h2>
 
 <p>
-Allt du behöver för att hitta ditt nästa namn.
+Enkel, snabb och gratis username generator.
 </p>
 
 </div>
 
 
-<div class="featureGrid">
+<div class="featuresGrid">
 
 <div class="feature">
 
-<div class="featureIcon">
-🏆
-</div>
+<div class="featureIcon">🏆</div>
 
-<h3>
-Best Match
-</h3>
+<h3>Best Match</h3>
 
 <p>
-Namezy väljer automatiskt ut de tre
+Namezy väljer automatiskt ut de
 bästa namnen från dina resultat.
 </p>
 
@@ -1234,17 +1171,13 @@ bästa namnen från dina resultat.
 
 <div class="feature">
 
-<div class="featureIcon">
-❤️
-</div>
+<div class="featureIcon">❤️</div>
 
-<h3>
-Spara favoriter
-</h3>
+<h3>Favoriter</h3>
 
 <p>
-Spara dina bästa namn så att du
-kan hitta dem igen senare.
+Spara namn du gillar och hitta
+dem igen senare.
 </p>
 
 </div>
@@ -1252,17 +1185,13 @@ kan hitta dem igen senare.
 
 <div class="feature">
 
-<div class="featureIcon">
-⚡
-</div>
+<div class="featureIcon">📤</div>
 
-<h3>
-Snabb generator
-</h3>
+<h3>Dela</h3>
 
 <p>
-Skapa nya namn direkt utan att
-behöva ladda om sidan.
+Dela Namezy enkelt med dina
+vänner när ni behöver ett nytt namn.
 </p>
 
 </div>
@@ -1287,9 +1216,9 @@ Gratis Username Generator
 </h2>
 
 <p>
-Namezy är en gratis username generator
-för dig som vill hitta kreativa och unika
-användarnamn för sociala medier och gaming.
+Namezy hjälper dig att skapa kreativa
+och unika användarnamn för sociala medier,
+gaming och olika onlineplattformar.
 </p>
 
 
@@ -1298,8 +1227,8 @@ TikTok användarnamn
 </h3>
 
 <p>
-Skapa söta, aesthetic, coola eller trendiga
-TikTok-namn med bara några klick.
+Skapa söta, aesthetic, coola och trendiga
+TikTok-namn med några få klick.
 </p>
 
 
@@ -1308,19 +1237,26 @@ Instagram användarnamn
 </h3>
 
 <p>
-Hitta korta och kreativa Instagram-namn
-med olika kombinationer av ord, bokstäver
-och siffror.
+Hitta kreativa Instagram-namn med
+olika kombinationer av ord och siffror.
 </p>
 
 
 <h3>
-Gamingnamn
-</h3>
+Gamingnamn</h3>
 
 <p>
-Skapa namn för Fortnite, Roblox, Discord
-och andra gamingplattformar.
+Skapa gamingnamn för Fortnite, Roblox,
+Discord och andra spel.
+</p>
+
+
+<h3>
+Är Namezy gratis?</h3>
+
+<p>
+Ja. Namezy kan användas direkt i webbläsaren
+utan att skapa ett konto.
 </p>
 
 </div>
@@ -1328,6 +1264,7 @@ och andra gamingplattformar.
 </div>
 
 </section>
+
 
 </main>
 
@@ -1347,46 +1284,43 @@ Kopierat! ✓
 "use strict";
 
 
-/* =========================
-   NAME DATA
-========================= */
+/* DATA */
 
 const prefixes={
 
 cute:[
-"baby","soft","sweet","lovely","cutie",
-"angel","pretty","bunny","honey","pink",
-"lil","fairy","dolly","dreamy","rosie",
-"mini","glossy","cherry","peachy","sparkle"
+"baby","soft","sweet","lovely","cutie","angel",
+"pretty","bunny","honey","pink","lil","fairy",
+"dolly","dreamy","rosie","mini","glossy",
+"cherry","peachy","sparkle"
 ],
 
 gamer:[
-"x","xx","pro","ghost","shadow","zero",
-"nova","dark","venom","sniper","clutch",
-"rapid","viper","storm","frost","blaze",
-"rage","toxic","drift","phantom"
+"x","xx","pro","ghost","shadow","zero","nova",
+"dark","venom","sniper","clutch","rapid","viper",
+"storm","frost","blaze","rage","toxic","drift",
+"phantom"
 ],
 
 dark:[
-"void","lost","dead","dark","night","soul",
-"alone","sin","grim","silent","noir","dusk",
-"raven","shade","midnight","haunted",
-"broken","fallen","ghost","eclipse"
+"void","lost","dead","dark","night","soul","alone",
+"sin","grim","silent","noir","dusk","raven",
+"shade","midnight","haunted","broken","fallen",
+"ghost","eclipse"
 ],
 
 aesthetic:[
-"luna","cloud","moon","velvet","dream",
-"mist","blush","glow","star","bloom",
-"lavender","pearl","muse","sunset",
-"starlit","ivory","aurora","daisy",
-"violet","serene"
+"luna","cloud","moon","velvet","dream","mist",
+"blush","glow","star","bloom","lavender","pearl",
+"muse","sunset","starlit","ivory","aurora",
+"daisy","violet","serene"
 ],
 
 cool:[
 "elite","prime","legend","ice","fire","wild",
-"royal","flash","rebel","famous","alpha",
-"super","real","official","iconic","supreme",
-"epic","top","ultra","next"
+"royal","flash","rebel","famous","alpha","super",
+"real","official","iconic","supreme","epic","top",
+"ultra","next"
 ]
 
 };
@@ -1395,30 +1329,28 @@ cool:[
 const suffixes={
 
 cute:[
-"xo","xoxo","baby","luv","bby","angel",
-"boo","bun","qt","xx","pie","kiss",
-"love","x","y","ie"
+"xo","xoxo","baby","luv","bby","angel","boo",
+"bun","qt","xx","pie","kiss","love","x","ie"
 ],
 
 gamer:[
-"x","z","fps","fn","yt","tv","gg","op",
-"777","999","clips","szn","pro","live","hq"
+"x","z","fps","fn","yt","tv","gg","op","777",
+"999","clips","szn","pro","live","hq"
 ],
 
 dark:[
-"666","444","999","xx","void","404",
-"exe","666x","nx","13","zzz","x","00","404x"
+"666","444","999","xx","void","404","exe","nx",
+"13","zzz","x","00","404x"
 ],
 
 aesthetic:[
-"xo","moon","luv","cloud","444","222",
-"444x","jpg","wav","core","era",
-"angel","dream"
+"xo","moon","luv","cloud","444","222","jpg",
+"wav","core","era","angel","dream"
 ],
 
 cool:[
-"x","xx","777","999","official","real",
-"hq","one","szn","tv","gg","pro","live","xoxo"
+"x","xx","777","999","official","real","hq",
+"one","szn","tv","gg","pro","live","xoxo"
 ]
 
 };
@@ -1426,43 +1358,23 @@ cool:[
 
 const platformSuffixes={
 
-tiktok:[
-"xo","x","444","222","777","luv",
-"era","core","szn","bby","xx"
-],
+tiktok:["xo","x","444","222","777","luv","era","core","szn","bby","xx"],
 
-instagram:[
-"xo","xoxo","jpg","444","222",
-"era","daily","luv","xx"
-],
+instagram:["xo","xoxo","jpg","444","222","era","daily","luv","xx"],
 
-fortnite:[
-"fn","fps","x","z","gg","clips",
-"777","op","pro","yt","tv"
-],
+fortnite:["fn","fps","x","z","gg","clips","777","op","pro","yt","tv"],
 
-roblox:[
-"rbx","x","xo","777","222",
-"444","blox","xx","play","z"
-],
+roblox:["rbx","x","xo","777","222","444","blox","xx","play","z"],
 
-discord:[
-"x","xo","gg","404","777",
-"222","444","exe","xx","z"
-]
+discord:["x","xo","gg","404","777","222","444","exe","xx","z"]
 
 };
 
 
-/* =========================
-   STATE
-========================= */
-
 let selectedStyle="cute";
 let selectedPlatform="tiktok";
-
-let favorites=[];
 let latestNames=[];
+let favorites=[];
 
 
 try{
@@ -1476,80 +1388,39 @@ favorites=[];
 }
 
 }catch{
-
 favorites=[];
-
 }
 
 
-/* =========================
-   ELEMENTS
-========================= */
-
-const wordInput=
-document.getElementById("word");
-
-const generateButton=
-document.getElementById("generate");
-
-const results=
-document.getElementById("results");
-
-const resultCount=
-document.getElementById("resultCount");
-
-const bestSection=
-document.getElementById("bestSection");
-
-const bestGrid=
-document.getElementById("bestGrid");
-
-const favoritesSection=
-document.getElementById("favoritesSection");
-
-const favoriteList=
-document.getElementById("favoriteList");
-
-const toast=
-document.getElementById("toast");
-
-const copyAllButton=
-document.getElementById("copyAll");
-
-const lengthSelect=
-document.getElementById("length");
-
-const numbersSelect=
-document.getElementById("numbers");
+const word=document.getElementById("word");
+const generate=document.getElementById("generate");
+const random=document.getElementById("random");
+const share=document.getElementById("share");
+const results=document.getElementById("results");
+const count=document.getElementById("count");
+const search=document.getElementById("search");
+const best=document.getElementById("best");
+const bestGrid=document.getElementById("bestGrid");
+const favoritesBox=document.getElementById("favorites");
+const favoriteList=document.getElementById("favoriteList");
+const copyAll=document.getElementById("copyAll");
+const length=document.getElementById("length");
+const numbers=document.getElementById("numbers");
+const toast=document.getElementById("toast");
 
 
-/* =========================
-   HELPERS
-========================= */
+function item(arr){
 
-function randomItem(array){
-
-return array[
-Math.floor(Math.random()*array.length)
+return arr[
+Math.floor(Math.random()*arr.length)
 ];
 
 }
 
 
-function randomNumber(){
+function clean(value){
 
-return randomItem([
-"22","24","44","77","99",
-"111","222","333","444",
-"555","666","777","888","999"
-]);
-
-}
-
-
-function cleanWord(word){
-
-return word
+return value
 .toLowerCase()
 .trim()
 .replace(/\s+/g,"")
@@ -1558,184 +1429,92 @@ return word
 }
 
 
-function capitalizeFirst(text){
+function number(){
 
-if(!text)return "";
-
-return text.charAt(0).toUpperCase()+text.slice(1);
-
-}
-
-
-function getRandomWord(){
-
-return randomItem([
-"luna","nova","moon","angel",
-"shadow","dream","cloud","star",
-"bunny","ghost","blush","velvet",
-"rose","storm","pixel","peach",
-"violet","spark","frost","cherry"
+return item([
+"22","24","44","77","99","111",
+"222","333","444","555","777","888","999"
 ]);
 
 }
 
 
-/* =========================
-   NAME LENGTH
-========================= */
+function randomWord(){
 
-function applyLength(name){
-
-const setting=lengthSelect.value;
-
-if(setting==="short" && name.length>12){
-name=name.slice(0,12);
-}
-
-if(setting==="medium" && name.length>17){
-name=name.slice(0,17);
-}
-
-if(setting==="long" && name.length>22){
-name=name.slice(0,22);
-}
-
-return name;
+return item([
+"luna","nova","moon","angel","shadow",
+"dream","cloud","star","bunny","ghost",
+"blush","velvet","rose","storm","pixel",
+"peach","violet","spark","frost","cherry"
+]);
 
 }
 
 
-/* =========================
-   NUMBERS
-========================= */
+function getName(){
 
-function maybeAddNumber(name){
+let w=clean(word.value);
 
-const setting=numbersSelect.value;
-
-if(setting==="none"){
-return name;
-}
-
-if(setting==="many"){
-return name+randomNumber();
-}
-
-if(Math.random()<.42){
-return name+randomNumber();
-}
-
-return name;
-
+if(!w){
+w=randomWord();
 }
 
 
-/* =========================
-   SCORE
-========================= */
+const p=item(prefixes[selectedStyle]);
 
-function getScore(name){
-
-let score=55;
-
-if(name.length>=5 && name.length<=15){
-score+=18;
-}
-
-if(!name.includes("_")){
-score+=7;
-}
-
-if(/^[a-zA-Z0-9]+$/.test(name)){
-score+=7;
-}
-
-if(name.length<20){
-score+=5;
-}
-
-score+=Math.floor(Math.random()*9);
-
-return Math.min(99,score);
-
-}
-
-
-/* =========================
-   CREATE NAME
-========================= */
-
-function generateName(){
-
-let word=cleanWord(wordInput.value);
-
-if(!word){
-word=getRandomWord();
-}
-
-const prefix=randomItem(
-prefixes[selectedStyle]
-);
-
-const suffix=randomItem([
+const s=item([
 ...suffixes[selectedStyle],
 ...platformSuffixes[selectedPlatform]
 ]);
 
-const number=randomNumber();
 
+let variations=[
 
-const variations=[
-
-()=>prefix+word+suffix,
-
-()=>word+suffix,
-
-()=>prefix+"_"+word,
-
-()=>word+"_"+suffix,
-
-()=>prefix+word+number,
-
-()=>word+number,
-
-()=>word+"x"+suffix,
-
-()=>"its"+word,
-
-()=>"im"+word,
-
-()=>"hey"+word,
-
-()=>"the"+word,
-
-()=>"not"+word,
-
-()=>word+"xo",
-
-()=>word+"luv",
-
-()=>word+randomItem([
-"zz","xx","yx","zx"
-]),
-
-()=>capitalizeFirst(word)+number,
-
-()=>prefix+word,
-
-()=>word+prefix,
-
-()=> "x"+word+"x",
-
-()=>word+"official"
+p+w+s,
+w+s,
+p+"_"+w,
+w+"_"+s,
+p+w+number(),
+w+number(),
+w+"x"+s,
+"its"+w,
+"im"+w,
+"hey"+w,
+"the"+w,
+"not"+w,
+w+"xo",
+w+"luv",
+w+item(["xx","zz","yx","zx"]),
+p+w,
+w+p,
+"x"+w+"x",
+w+"official"
 
 ];
 
 
-let name=randomItem(variations)();
+let name=item(variations);
 
-name=maybeAddNumber(name);
 
+/* NUMBERS */
+
+if(numbers.value==="many"){
+
+name+=number();
+
+}
+
+else if(
+numbers.value==="some" &&
+Math.random()<.4
+){
+
+name+=number();
+
+}
+
+
+/* PLATFORM */
 
 if(
 selectedPlatform==="fortnite"||
@@ -1749,95 +1528,201 @@ name=name
 }
 
 
-name=applyLength(name);
+/* LENGTH */
 
+let max=17;
 
-if(name.length>24){
-name=name.slice(0,24);
-}
+if(length.value==="short")max=12;
+if(length.value==="long")max=22;
 
+name=name.slice(0,max);
 
 return name;
 
 }
 
 
-/* =========================
-   GENERATE 12
-========================= */
+function score(name){
+
+let s=60;
+
+if(name.length>=5&&name.length<=15)s+=15;
+
+if(!name.includes("_"))s+=7;
+
+if(/^[a-zA-Z0-9]+$/.test(name))s+=7;
+
+if(name.length<20)s+=5;
+
+s+=Math.floor(Math.random()*7);
+
+return Math.min(99,s);
+
+}
+
 
 function generateNames(){
 
-const generated=[];
-const used=new Set();
+let arr=[];
+let used=new Set();
 
-let attempts=0;
+let tries=0;
 
-while(
-generated.length<12 &&
-attempts<300
+while(arr.length<12&&tries<300){
+
+let n=getName();
+
+if(
+n &&
+!used.has(n.toLowerCase())
 ){
 
-const name=generateName();
-
-const key=name.toLowerCase();
-
-if(name && !used.has(key)){
-
-used.add(key);
-generated.push(name);
+used.add(n.toLowerCase());
+arr.push(n);
 
 }
 
-attempts++;
+tries++;
 
 }
 
+latestNames=arr;
 
-latestNames=generated;
+localStorage.setItem(
+"namezyRecent",
+JSON.stringify(arr)
+);
 
-renderResults(generated);
-
-renderBest(generated);
+render(arr);
+renderBest(arr);
 
 }
 
 
-/* =========================
-   BEST MATCH
-========================= */
+function render(names){
+
+results.innerHTML="";
+
+let filter=search.value
+.toLowerCase()
+.trim();
+
+let filtered=names.filter(
+n=>n.toLowerCase().includes(filter)
+);
+
+count.textContent=
+filtered.length+" namn";
+
+
+filtered.forEach((name,index)=>{
+
+let card=document.createElement("div");
+
+card.className="nameCard";
+
+card.style.animationDelay=
+(index*.03)+"s";
+
+
+let text=document.createElement("div");
+
+text.className="nameText";
+
+
+let title=document.createElement("div");
+
+title.className="name";
+title.textContent=name;
+
+
+let meta=document.createElement("div");
+
+meta.className="meta";
+
+meta.textContent=
+platformName(selectedPlatform)
++" • "
++styleName(selectedStyle);
+
+
+let sc=document.createElement("div");
+
+sc.className="score";
+
+sc.textContent=
+"⭐ "+score(name)+"/100";
+
+
+text.appendChild(title);
+text.appendChild(meta);
+text.appendChild(sc);
+
+
+let copy=document.createElement("button");
+
+copy.className="cardBtn";
+copy.textContent="📋";
+
+copy.onclick=()=>copyName(name);
+
+
+let fav=document.createElement("button");
+
+fav.className="cardBtn favorite";
+
+updateFavorite(fav,name);
+
+fav.onclick=()=>{
+
+toggleFavorite(name);
+updateFavorite(fav,name);
+
+};
+
+
+card.appendChild(text);
+card.appendChild(copy);
+card.appendChild(fav);
+
+results.appendChild(card);
+
+});
+
+}
+
 
 function renderBest(names){
 
 bestGrid.innerHTML="";
 
-const scored=names
-.map(name=>({
-name:name,
-score:getScore(name)
+let top=names
+.map(n=>({
+name:n,
+score:score(n)
 }))
 .sort((a,b)=>b.score-a.score)
 .slice(0,3);
 
 
-scored.forEach((item,index)=>{
+top.forEach((x,i)=>{
 
-const card=document.createElement("div");
+let card=document.createElement("div");
 
 card.className="bestCard";
 
 card.innerHTML=`
 
-<div class="bestNumber">
-#${index+1} BEST MATCH
+<div class="bestRank">
+#${i+1} BEST MATCH
 </div>
 
 <div class="bestName">
-${escapeHTML(item.name)}
+${escapeHTML(x.name)}
 </div>
 
 <div class="bestScore">
-⭐ ${item.score}/100 • ${platformLabel(selectedPlatform)}
+⭐ ${x.score}/100
 </div>
 
 `;
@@ -1847,16 +1732,12 @@ bestGrid.appendChild(card);
 });
 
 
-if(scored.length){
-bestSection.classList.add("show");
+if(top.length){
+best.classList.add("show");
 }
 
 }
 
-
-/* =========================
-   ESCAPE HTML
-========================= */
 
 function escapeHTML(text){
 
@@ -1870,184 +1751,33 @@ return text
 }
 
 
-/* =========================
-   RESULTS
-========================= */
+function platformName(x){
 
-function renderResults(names){
-
-results.innerHTML="";
-
-resultCount.textContent=
-names.length+" namn";
-
-
-names.forEach((name,index)=>{
-
-const card=document.createElement("div");
-
-card.className="nameCard";
-
-card.style.animationDelay=
-(index*.035)+"s";
-
-
-const text=document.createElement("div");
-
-text.className="nameText";
-
-
-const nameElement=
-document.createElement("div");
-
-nameElement.className="name";
-
-nameElement.textContent=name;
-
-
-const meta=
-document.createElement("div");
-
-meta.className="meta";
-
-meta.textContent=
-platformLabel(selectedPlatform)
-+" • "
-+styleLabel(selectedStyle);
-
-
-const score=
-getScore(name);
-
-
-const scoreRow=
-document.createElement("div");
-
-scoreRow.className="scoreRow";
-
-
-const scoreElement=
-document.createElement("span");
-
-scoreElement.className="score";
-
-scoreElement.textContent=
-"⭐ "+score+"/100";
-
-
-const popular=
-document.createElement("span");
-
-popular.className="popular";
-
-if(score>=85){
-popular.textContent="🔥 Populärt";
-}else if(score>=75){
-popular.textContent="✦ Bra match";
-}else{
-popular.textContent="✓ Bra namn";
-}
-
-
-scoreRow.appendChild(scoreElement);
-scoreRow.appendChild(popular);
-
-
-text.appendChild(nameElement);
-text.appendChild(meta);
-text.appendChild(scoreRow);
-
-
-/* COPY */
-
-const copy=
-document.createElement("button");
-
-copy.className="cardBtn";
-copy.innerHTML="📋";
-
-copy.addEventListener(
-"click",
-()=>copyName(name)
-);
-
-
-/* FAVORITE */
-
-const favorite=
-document.createElement("button");
-
-favorite.className="cardBtn favorite";
-
-updateFavoriteButton(
-favorite,
-name
-);
-
-
-favorite.addEventListener(
-"click",
-()=>{
-
-toggleFavorite(name);
-
-updateFavoriteButton(
-favorite,
-name
-);
-
-}
-);
-
-
-card.appendChild(text);
-card.appendChild(copy);
-card.appendChild(favorite);
-
-results.appendChild(card);
-
-});
-
-}
-
-
-/* =========================
-   LABELS
-========================= */
-
-function platformLabel(platform){
-
-const labels={
+return{
 tiktok:"TikTok",
 instagram:"Instagram",
 fortnite:"Fortnite",
 roblox:"Roblox",
 discord:"Discord"
-};
-
-return labels[platform]||"Social";
+}[x];
 
 }
 
 
-function styleLabel(style){
+function styleName(x){
 
-const labels={
+return{
 cute:"Cute",
 gamer:"Gamer",
 dark:"Dark",
 aesthetic:"Aesthetic",
 cool:"Cool"
-};
-
-return labels[style]||style;
+}[x];
 
 }
 
 
-/* =========================
-   COPY
-========================= */
+/* COPY */
 
 async function copyName(name){
 
@@ -2059,7 +1789,7 @@ showToast("Kopierat! ✓");
 
 }catch{
 
-const area=document.createElement("textarea");
+let area=document.createElement("textarea");
 
 area.value=name;
 
@@ -2078,11 +1808,7 @@ showToast("Kopierat! ✓");
 }
 
 
-/* =========================
-   COPY ALL
-========================= */
-
-async function copyAll(){
+async function copyEverything(){
 
 if(!latestNames.length){
 
@@ -2101,31 +1827,7 @@ showToast("Alla namn kopierade! ✓");
 }
 
 
-/* =========================
-   TOAST
-========================= */
-
-let toastTimer;
-
-function showToast(message){
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-clearTimeout(toastTimer);
-
-toastTimer=setTimeout(
-()=>toast.classList.remove("show"),
-1800
-);
-
-}
-
-
-/* =========================
-   FAVORITES
-========================= */
+/* FAVORITES */
 
 function isFavorite(name){
 
@@ -2134,17 +1836,17 @@ return favorites.includes(name);
 }
 
 
-function updateFavoriteButton(button,name){
+function updateFavorite(button,name){
 
 if(isFavorite(name)){
 
 button.classList.add("active");
-button.innerHTML="♥";
+button.textContent="♥";
 
 }else{
 
 button.classList.remove("active");
-button.innerHTML="♡";
+button.textContent="♡";
 
 }
 
@@ -2156,7 +1858,7 @@ function toggleFavorite(name){
 if(isFavorite(name)){
 
 favorites=favorites.filter(
-item=>item!==name
+x=>x!==name
 );
 
 showToast("Borttagen från favoriter");
@@ -2169,22 +1871,12 @@ showToast("Sparad som favorit ❤️");
 
 }
 
-saveFavorites();
-renderFavorites();
-
-}
-
-
-function saveFavorites(){
-
-try{
-
 localStorage.setItem(
 "namezyFavorites",
 JSON.stringify(favorites)
 );
 
-}catch{}
+renderFavorites();
 
 }
 
@@ -2195,142 +1887,131 @@ favoriteList.innerHTML="";
 
 if(!favorites.length){
 
-favoritesSection.classList.remove("show");
+favoritesBox.classList.remove("show");
 
 return;
 
 }
 
-favoritesSection.classList.add("show");
+favoritesBox.classList.add("show");
 
 
 favorites.forEach(name=>{
 
-const item=
-document.createElement("div");
+let itemBox=document.createElement("div");
 
-item.className="favoriteItem";
-
-
-const text=
-document.createElement("span");
-
-text.textContent=name;
+itemBox.className="favoriteItem";
 
 
-const copy=
-document.createElement("button");
+let span=document.createElement("span");
+
+span.textContent=name;
+
+
+let copy=document.createElement("button");
 
 copy.textContent="📋";
 
-copy.addEventListener(
-"click",
-()=>copyName(name)
-);
+copy.onclick=()=>copyName(name);
 
 
-const remove=
-document.createElement("button");
+let remove=document.createElement("button");
 
 remove.textContent="×";
 
-remove.addEventListener(
-"click",
-()=>toggleFavorite(name)
-);
+remove.onclick=()=>toggleFavorite(name);
 
 
-item.appendChild(text);
-item.appendChild(copy);
-item.appendChild(remove);
+itemBox.appendChild(span);
+itemBox.appendChild(copy);
+itemBox.appendChild(remove);
 
-favoriteList.appendChild(item);
+favoriteList.appendChild(itemBox);
 
 });
 
 }
 
 
-/* =========================
-   STYLE SELECTOR
-========================= */
+/* TOAST */
 
-document
-.querySelectorAll("#styleChoices .choice")
-.forEach(button=>{
+let timer;
 
-button.addEventListener(
-"click",
-()=>{
+function showToast(message){
 
-document
-.querySelectorAll("#styleChoices .choice")
-.forEach(
-item=>item.classList.remove("active")
+toast.textContent=message;
+
+toast.classList.add("show");
+
+clearTimeout(timer);
+
+timer=setTimeout(
+()=>toast.classList.remove("show"),
+1800
 );
 
-button.classList.add("active");
+}
 
-selectedStyle=
-button.dataset.style;
+
+/* STYLE */
+
+document
+.querySelectorAll(".choice")
+.forEach(btn=>{
+
+btn.onclick=()=>{
+
+document
+.querySelectorAll(".choice")
+.forEach(x=>x.classList.remove("active"));
+
+btn.classList.add("active");
+
+selectedStyle=btn.dataset.style;
 
 generateNames();
 
-}
-);
+};
 
 });
 
 
-/* =========================
-   PLATFORM SELECTOR
-========================= */
+/* PLATFORM */
 
 document
-.querySelectorAll("#platformChoices .platform")
-.forEach(button=>{
+.querySelectorAll(".platform")
+.forEach(btn=>{
 
-button.addEventListener(
-"click",
-()=>{
+btn.onclick=()=>{
 
 document
-.querySelectorAll("#platformChoices .platform")
-.forEach(
-item=>item.classList.remove("active")
-);
+.querySelectorAll(".platform")
+.forEach(x=>x.classList.remove("active"));
 
-button.classList.add("active");
+btn.classList.add("active");
 
-selectedPlatform=
-button.dataset.platform;
+selectedPlatform=btn.dataset.platform;
 
 generateNames();
 
-}
-);
+};
 
 });
 
 
-/* =========================
-   QUICK PLATFORM
-========================= */
+/* QUICK */
 
 document
-.querySelectorAll(".quickPlatform")
-.forEach(button=>{
+.querySelectorAll(".quick button")
+.forEach(btn=>{
 
-button.addEventListener(
-"click",
-()=>{
+btn.onclick=()=>{
 
-const platform=
-button.dataset.quick;
-
-const target=
+let target=
 document.querySelector(
-'[data-platform="'+platform+'"]'
+'[data-platform="'+
+btn.dataset.quick+
+'"]'
 );
 
 if(target){
@@ -2340,58 +2021,88 @@ target.click();
 document
 .querySelector(".generator")
 .scrollIntoView({
-behavior:"smooth",
-block:"start"
+behavior:"smooth"
 });
 
 }
 
-}
-);
+};
 
 });
 
 
-/* =========================
-   EVENTS
-========================= */
+/* BUTTONS */
 
-generateButton.addEventListener(
-"click",
-generateNames
+generate.onclick=generateNames;
+
+random.onclick=()=>{
+
+word.value="";
+
+generateNames();
+
+};
+
+
+copyAll.onclick=copyEverything;
+
+
+/* SHARE */
+
+share.onclick=async()=>{
+
+let shareData={
+title:"Namezy",
+text:"Jag hittade den här gratis username generatorn!",
+url:location.href
+};
+
+
+try{
+
+if(navigator.share){
+
+await navigator.share(shareData);
+
+}else{
+
+await navigator.clipboard.writeText(location.href);
+
+showToast("Länk kopierad! ✓");
+
+}
+
+}catch{}
+
+};
+
+
+/* SEARCH */
+
+search.addEventListener(
+"input",
+()=>render(latestNames)
 );
 
-copyAllButton.addEventListener(
-"click",
-copyAll
-);
 
+/* ENTER */
 
-wordInput.addEventListener(
+word.addEventListener(
 "keydown",
-event=>{
+e=>{
 
-if(event.key==="Enter"){
+if(e.key==="Enter"){
 generateNames();
 }
 
 });
 
 
-lengthSelect.addEventListener(
-"change",
-generateNames
-);
-
-numbersSelect.addEventListener(
-"change",
-generateNames
-);
+length.onchange=generateNames;
+numbers.onchange=generateNames;
 
 
-/* =========================
-   START
-========================= */
+/* START */
 
 renderFavorites();
 
