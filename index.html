@@ -7,8 +7,9 @@
 
 <title>Namezy – Gratis Username Generator</title>
 
-<meta name="description"
-content="Skapa coola, söta och unika användarnamn för TikTok, Instagram, Fortnite, Roblox och Discord med Namezy.">
+<meta name="description" content="Namezy är en gratis username generator för TikTok, Instagram, Fortnite, Roblox och Discord. Skapa coola, aesthetic, cute och unika användarnamn.">
+
+<meta name="keywords" content="username generator, användarnamn generator, TikTok namn, Instagram namn, Fortnite namn, Roblox namn, Discord namn">
 
 <style>
 
@@ -21,7 +22,8 @@ padding:0;
 :root{
 --bg:#09070d;
 --card:#15101d;
---border:rgba(255,255,255,.11);
+--card2:#100c16;
+--border:rgba(255,255,255,.10);
 --text:#fff;
 --muted:#a99eb2;
 --pink:#e58cff;
@@ -36,14 +38,14 @@ body{
 min-height:100vh;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 background:
-radial-gradient(circle at 50% -10%,rgba(214,105,255,.25),transparent 35%),
-radial-gradient(circle at 100% 35%,rgba(129,48,196,.15),transparent 30%),
+radial-gradient(circle at 50% -10%,rgba(214,105,255,.23),transparent 35%),
+radial-gradient(circle at 100% 35%,rgba(129,48,196,.14),transparent 30%),
 #09070d;
 color:#fff;
 overflow-x:hidden;
 }
 
-button,input{
+button,input,select{
 font:inherit;
 }
 
@@ -53,14 +55,20 @@ cursor:pointer;
 }
 
 .container{
-width:min(100% - 22px,1050px);
+width:min(100% - 22px,1080px);
 margin:auto;
 }
 
 /* HEADER */
 
 header{
-padding:20px 0 8px;
+padding:18px 0;
+border-bottom:1px solid rgba(255,255,255,.05);
+background:rgba(9,7,13,.65);
+backdrop-filter:blur(14px);
+position:sticky;
+top:0;
+z-index:50;
 }
 
 .nav{
@@ -72,9 +80,9 @@ align-items:center;
 .logo{
 display:flex;
 align-items:center;
-gap:9px;
-font-size:27px;
-font-weight:900;
+gap:8px;
+font-size:26px;
+font-weight:950;
 letter-spacing:-1.5px;
 }
 
@@ -83,7 +91,22 @@ color:var(--pink);
 }
 
 .logoIcon{
-font-size:26px;
+font-size:24px;
+}
+
+.navLinks{
+display:flex;
+gap:7px;
+}
+
+.navLinks button{
+background:#15101d;
+border:1px solid var(--border);
+color:#cfc4d4;
+padding:8px 12px;
+border-radius:10px;
+font-size:11px;
+font-weight:800;
 }
 
 .badge{
@@ -91,29 +114,29 @@ padding:8px 13px;
 border:1px solid var(--border);
 border-radius:999px;
 background:rgba(255,255,255,.04);
-font-size:12px;
-font-weight:700;
+font-size:11px;
+font-weight:800;
 }
 
 /* HERO */
 
 .hero{
 text-align:center;
-padding:60px 0 30px;
+padding:70px 0 34px;
 }
 
 .eyebrow{
 color:var(--pink);
-font-size:12px;
+font-size:11px;
 font-weight:900;
 letter-spacing:3px;
 margin-bottom:17px;
 }
 
 .hero h1{
-font-size:clamp(55px,12vw,92px);
-line-height:.92;
-letter-spacing:-5px;
+font-size:clamp(60px,13vw,100px);
+line-height:.9;
+letter-spacing:-6px;
 background:linear-gradient(135deg,#fff,#f0a5ff,#a94dff);
 -webkit-background-clip:text;
 background-clip:text;
@@ -128,21 +151,48 @@ font-size:17px;
 line-height:1.6;
 }
 
+.heroButtons{
+display:flex;
+justify-content:center;
+gap:9px;
+margin-top:26px;
+flex-wrap:wrap;
+}
+
+.heroButton{
+padding:13px 18px;
+border-radius:13px;
+font-size:13px;
+font-weight:900;
+background:linear-gradient(135deg,#e58cff,#a84cff);
+color:white;
+box-shadow:0 10px 30px rgba(184,92,255,.2);
+}
+
+.heroButton.secondary{
+background:#17111f;
+border:1px solid var(--border);
+box-shadow:none;
+}
+
+/* QUICK */
+
 .quick{
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:8px;
-margin-top:25px;
+margin-top:24px;
 }
 
 .quick button{
-padding:11px 15px;
+padding:10px 14px;
 border-radius:999px;
 background:#11101a;
-border:1px solid rgba(255,255,255,.14);
+border:1px solid rgba(255,255,255,.12);
 color:#ddd4e1;
-font-weight:700;
+font-size:12px;
+font-weight:800;
 }
 
 /* GENERATOR */
@@ -151,7 +201,7 @@ font-weight:700;
 background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
 border:1px solid var(--border);
 border-radius:25px;
-padding:17px;
+padding:18px;
 box-shadow:0 25px 70px rgba(0,0,0,.4);
 }
 
@@ -174,7 +224,7 @@ outline:none;
 
 .input:focus{
 border-color:var(--pink);
-box-shadow:0 0 0 4px rgba(229,140,255,.09);
+box-shadow:0 0 0 4px rgba(229,140,255,.08);
 }
 
 .input::placeholder{
@@ -200,7 +250,7 @@ border-radius:13px;
 background:#100c16;
 border:1px solid var(--border);
 color:#bcb0c4;
-font-weight:750;
+font-weight:800;
 }
 
 .choice.active,
@@ -208,6 +258,7 @@ font-weight:750;
 background:rgba(229,140,255,.14);
 color:#fff;
 border-color:var(--pink);
+box-shadow:0 0 20px rgba(229,140,255,.07);
 }
 
 .platforms{
@@ -258,6 +309,11 @@ color:#fff;
 font-size:16px;
 font-weight:900;
 box-shadow:0 12px 30px rgba(184,92,255,.28);
+transition:.15s;
+}
+
+.generate:active{
+transform:scale(.985);
 }
 
 .secondaryButtons{
@@ -483,10 +539,39 @@ color:#9b8fa2;
 font-size:15px;
 }
 
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:9px;
+margin-top:14px;
+}
+
+.stat{
+padding:17px;
+background:rgba(255,255,255,.035);
+border:1px solid var(--border);
+border-radius:16px;
+text-align:center;
+}
+
+.statNumber{
+font-size:22px;
+font-weight:950;
+color:#fff;
+}
+
+.statText{
+font-size:10px;
+color:var(--muted);
+margin-top:4px;
+}
+
 /* TRENDING */
 
 .section{
-padding:65px 0 20px;
+padding:68px 0 20px;
 }
 
 .sectionHead{
@@ -582,6 +667,33 @@ font-size:12px;
 line-height:1.55;
 }
 
+/* FAQ */
+
+.faq{
+display:grid;
+gap:9px;
+}
+
+.faqItem{
+background:rgba(255,255,255,.035);
+border:1px solid var(--border);
+border-radius:15px;
+padding:17px;
+}
+
+.faqItem summary{
+cursor:pointer;
+font-weight:900;
+font-size:14px;
+}
+
+.faqItem p{
+color:var(--muted);
+font-size:12px;
+line-height:1.6;
+margin-top:10px;
+}
+
 /* INFO */
 
 .info{
@@ -638,7 +750,7 @@ transform:translate(-50%,0);
 
 footer{
 text-align:center;
-padding:20px 0 35px;
+padding:25px 0 38px;
 color:#756a7c;
 font-size:11px;
 }
@@ -648,20 +760,21 @@ font-size:11px;
 @media(max-width:700px){
 
 .container{
-width:min(100% - 20px,1050px);
+width:min(100% - 20px,1080px);
 }
 
+.navLinks,
 .badge{
 display:none;
 }
 
 .hero{
-padding:52px 0 28px;
+padding:55px 0 28px;
 }
 
 .hero h1{
-font-size:57px;
-letter-spacing:-3px;
+font-size:59px;
+letter-spacing:-4px;
 }
 
 .hero p{
@@ -669,8 +782,8 @@ font-size:15px;
 }
 
 .quick button{
-font-size:12px;
-padding:9px 12px;
+font-size:11px;
+padding:9px 11px;
 }
 
 .generator{
@@ -705,6 +818,10 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
+.stats{
+grid-template-columns:1fr 1fr 1fr;
+}
+
 .resultsHeader{
 flex-wrap:wrap;
 }
@@ -736,14 +853,20 @@ width:38px;
 height:38px;
 }
 
+.stats{
+gap:5px;
+}
+
+.stat{
+padding:13px 5px;
+}
+
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -756,6 +879,12 @@ height:38px;
 Name<span>zy.</span>
 </div>
 
+<div class="navLinks">
+<button data-scroll="generatorSection">Generator</button>
+<button data-scroll="trendingSection">Trending</button>
+<button data-scroll="faqSection">FAQ</button>
+</div>
+
 <div class="badge">
 ✨ Gratis
 </div>
@@ -766,24 +895,34 @@ Name<span>zy.</span>
 
 </header>
 
-
 <main>
-
 
 <section class="hero">
 
 <div class="container">
 
 <div class="eyebrow">
-✦ SKAPA DITT PERFEKTA ANVÄNDARNAMN ✦
+✦ CREATE SOMETHING UNIQUE ✦
 </div>
 
 <h1>Namezy</h1>
 
 <p>
 Hitta ditt nästa användarnamn på några sekunder.
-Skapa unika namn för sociala medier och gaming.
+Skapa coola, cute, aesthetic och gamingnamn gratis.
 </p>
+
+<div class="heroButtons">
+
+<button class="heroButton" data-scroll="generatorSection">
+✨ Börja skapa
+</button>
+
+<button class="heroButton secondary" id="heroRandom">
+🎲 Slumpa
+</button>
+
+</div>
 
 <div class="quick">
 
@@ -800,7 +939,7 @@ Skapa unika namn för sociala medier och gaming.
 </section>
 
 
-<section>
+<section id="generatorSection">
 
 <div class="container">
 
@@ -823,7 +962,7 @@ autocomplete="off"
 2. Välj stil
 </div>
 
-<div class="choices" id="styles">
+<div class="choices">
 
 <button class="choice active" data-style="cute">
 🎀 Cute
@@ -852,7 +991,7 @@ autocomplete="off"
 3. Välj plattform
 </div>
 
-<div class="platforms" id="platforms">
+<div class="platforms">
 
 <button class="platform active" data-platform="tiktok">
 ♪ TikTok
@@ -885,9 +1024,7 @@ autocomplete="off"
 
 <div class="option">
 
-<label>
-NAMNLÄNGD
-</label>
+<label>NAMNLÄNGD</label>
 
 <select id="length">
 
@@ -902,9 +1039,7 @@ NAMNLÄNGD
 
 <div class="option">
 
-<label>
-SIFFROR
-</label>
+<label>SIFFROR</label>
 
 <select id="numbers">
 
@@ -939,7 +1074,25 @@ SIFFROR
 </div>
 
 
-<!-- BEST MATCH -->
+<div class="stats">
+
+<div class="stat">
+<div class="statNumber" id="generatedStat">0</div>
+<div class="statText">Namn skapade</div>
+</div>
+
+<div class="stat">
+<div class="statNumber">5</div>
+<div class="statText">Plattformar</div>
+</div>
+
+<div class="stat">
+<div class="statNumber">∞</div>
+<div class="statText">Möjligheter</div>
+</div>
+
+</div>
+
 
 <div class="best" id="best">
 
@@ -957,8 +1110,6 @@ TOP 3
 
 </div>
 
-
-<!-- RESULTS -->
 
 <div class="resultsHeader">
 
@@ -990,8 +1141,6 @@ autocomplete="off"
 <div class="results" id="results"></div>
 
 
-<!-- FAVORITES -->
-
 <div class="favorites" id="favorites">
 
 <div class="resultsHeader">
@@ -1009,9 +1158,7 @@ autocomplete="off"
 </section>
 
 
-<!-- TRENDING -->
-
-<section class="section">
+<section class="section" id="trendingSection">
 
 <div class="container">
 
@@ -1020,7 +1167,7 @@ autocomplete="off"
 <h2>🔥 Trending Names</h2>
 
 <p>
-Populära namnidéer på Namezy.
+Namnidéer för inspiration.
 </p>
 
 </div>
@@ -1029,104 +1176,51 @@ Populära namnidéer på Namezy.
 <div class="trending">
 
 <div class="trend">
-
 <div class="trendTop">
-
 <div class="trendName">vexzy</div>
-
 <div class="rank">#1</div>
-
 </div>
-
-<div class="bar">
-<span style="--w:96%"></span>
+<div class="bar"><span style="--w:96%"></span></div>
 </div>
-
-</div>
-
 
 <div class="trend">
-
 <div class="trendTop">
-
 <div class="trendName">lunavx</div>
-
 <div class="rank">#2</div>
-
 </div>
-
-<div class="bar">
-<span style="--w:92%"></span>
+<div class="bar"><span style="--w:92%"></span></div>
 </div>
-
-</div>
-
 
 <div class="trend">
-
 <div class="trendTop">
-
 <div class="trendName">itsnova</div>
-
 <div class="rank">#3</div>
-
 </div>
-
-<div class="bar">
-<span style="--w:88%"></span>
+<div class="bar"><span style="--w:88%"></span></div>
 </div>
-
-</div>
-
 
 <div class="trend">
-
 <div class="trendTop">
-
 <div class="trendName">wilmavx</div>
-
 <div class="rank">#4</div>
-
 </div>
-
-<div class="bar">
-<span style="--w:84%"></span>
+<div class="bar"><span style="--w:84%"></span></div>
 </div>
-
-</div>
-
 
 <div class="trend">
-
 <div class="trendTop">
-
 <div class="trendName">ghostszn</div>
-
 <div class="rank">#5</div>
-
 </div>
-
-<div class="bar">
-<span style="--w:79%"></span>
+<div class="bar"><span style="--w:79%"></span></div>
 </div>
-
-</div>
-
 
 <div class="trend">
-
 <div class="trendTop">
-
 <div class="trendName">softluna</div>
-
 <div class="rank">#6</div>
-
 </div>
-
-<div class="bar">
-<span style="--w:74%"></span>
-</div>
-
+<div class="bar"><span style="--w:74%"></span></div>
 </div>
 
 </div>
@@ -1135,8 +1229,6 @@ Populära namnidéer på Namezy.
 
 </section>
 
-
-<!-- FEATURES -->
 
 <section class="features">
 
@@ -1147,7 +1239,7 @@ Populära namnidéer på Namezy.
 <h2>Varför Namezy?</h2>
 
 <p>
-Enkel, snabb och gratis username generator.
+Allt du behöver för att hitta ett bra användarnamn.
 </p>
 
 </div>
@@ -1156,44 +1248,51 @@ Enkel, snabb och gratis username generator.
 <div class="featuresGrid">
 
 <div class="feature">
+<div class="featureIcon">⚡</div>
+<h3>Snabbt</h3>
+<p>
+Skapa flera nya namn på bara några sekunder.
+</p>
+</div>
 
+<div class="feature">
 <div class="featureIcon">🏆</div>
-
 <h3>Best Match</h3>
-
 <p>
-Namezy väljer automatiskt ut de
-bästa namnen från dina resultat.
+Namezy väljer ut de starkaste namnen från dina resultat.
 </p>
-
 </div>
 
-
 <div class="feature">
-
 <div class="featureIcon">❤️</div>
-
 <h3>Favoriter</h3>
-
 <p>
-Spara namn du gillar och hitta
-dem igen senare.
+Spara dina bästa namn direkt i webbläsaren.
 </p>
-
 </div>
 
+<div class="feature">
+<div class="featureIcon">🎮</div>
+<h3>Gaming</h3>
+<p>
+Skapa namn för Fortnite, Roblox och Discord.
+</p>
+</div>
 
 <div class="feature">
-
-<div class="featureIcon">📤</div>
-
-<h3>Dela</h3>
-
+<div class="featureIcon">📱</div>
+<h3>Sociala medier</h3>
 <p>
-Dela Namezy enkelt med dina
-vänner när ni behöver ett nytt namn.
+Hitta idéer för TikTok och Instagram.
 </p>
+</div>
 
+<div class="feature">
+<div class="featureIcon">📤</div>
+<h3>Dela</h3>
+<p>
+Skicka Namezy enkelt till dina vänner.
+</p>
 </div>
 
 </div>
@@ -1203,7 +1302,57 @@ vänner när ni behöver ett nytt namn.
 </section>
 
 
-<!-- SEO -->
+<section class="section" id="faqSection">
+
+<div class="container">
+
+<div class="sectionHead">
+
+<h2>❓ Vanliga frågor</h2>
+
+<p>
+Allt du behöver veta om Namezy.
+</p>
+
+</div>
+
+
+<div class="faq">
+
+<details class="faqItem">
+<summary>Är Namezy gratis?</summary>
+<p>
+Ja. Namezy är byggt för att kunna användas direkt utan konto.
+</p>
+</details>
+
+<details class="faqItem">
+<summary>Vilka plattformar fungerar Namezy för?</summary>
+<p>
+Du kan skapa namn för TikTok, Instagram, Fortnite, Roblox och Discord.
+</p>
+</details>
+
+<details class="faqItem">
+<summary>Kan jag spara mina favoritnamn?</summary>
+<p>
+Ja. Tryck på hjärtat bredvid ett namn så sparas det lokalt i din webbläsare.
+</p>
+</details>
+
+<details class="faqItem">
+<summary>Kan jag använda namnen jag får?</summary>
+<p>
+Namezy skapar namnidéer. Kontrollera alltid på den aktuella plattformen om namnet faktiskt är ledigt innan du använder det.
+</p>
+</details>
+
+</div>
+
+</div>
+
+</section>
+
 
 <section class="info">
 
@@ -1216,34 +1365,29 @@ Gratis Username Generator
 </h2>
 
 <p>
-Namezy hjälper dig att skapa kreativa
-och unika användarnamn för sociala medier,
-gaming och olika onlineplattformar.
+Namezy hjälper dig att skapa kreativa och unika
+användarnamn för sociala medier, gaming och
+andra onlineplattformar.
 </p>
 
 
-<h3>
-TikTok användarnamn
-</h3>
+<h3>TikTok användarnamn</h3>
 
 <p>
-Skapa söta, aesthetic, coola och trendiga
+Skapa cute, aesthetic, coola och trendiga
 TikTok-namn med några få klick.
 </p>
 
 
-<h3>
-Instagram användarnamn
-</h3>
+<h3>Instagram användarnamn</h3>
 
 <p>
-Hitta kreativa Instagram-namn med
-olika kombinationer av ord och siffror.
+Hitta kreativa Instagram-namn med olika
+kombinationer av ord och siffror.
 </p>
 
 
-<h3>
-Gamingnamn</h3>
+<h3>Gamingnamn</h3>
 
 <p>
 Skapa gamingnamn för Fortnite, Roblox,
@@ -1251,12 +1395,12 @@ Discord och andra spel.
 </p>
 
 
-<h3>
-Är Namezy gratis?</h3>
+<h3>Hur fungerar Namezy?</h3>
 
 <p>
-Ja. Namezy kan användas direkt i webbläsaren
-utan att skapa ett konto.
+Skriv in ett ord eller namn, välj stil och plattform
+och tryck på generera. Namezy skapar därefter
+flera olika namnförslag.
 </p>
 
 </div>
@@ -1264,7 +1408,6 @@ utan att skapa ett konto.
 </div>
 
 </section>
-
 
 </main>
 
@@ -1284,43 +1427,45 @@ Kopierat! ✓
 "use strict";
 
 
-/* DATA */
+/* =========================
+   NAME DATA
+========================= */
 
 const prefixes={
 
 cute:[
 "baby","soft","sweet","lovely","cutie","angel",
 "pretty","bunny","honey","pink","lil","fairy",
-"dolly","dreamy","rosie","mini","glossy",
-"cherry","peachy","sparkle"
+"dolly","dreamy","rosie","mini","glossy","cherry",
+"peachy","sparkle","kitty","sugar","blush","princess"
 ],
 
 gamer:[
 "x","xx","pro","ghost","shadow","zero","nova",
 "dark","venom","sniper","clutch","rapid","viper",
 "storm","frost","blaze","rage","toxic","drift",
-"phantom"
+"phantom","reaper","pixel","strike","elite"
 ],
 
 dark:[
 "void","lost","dead","dark","night","soul","alone",
 "sin","grim","silent","noir","dusk","raven",
 "shade","midnight","haunted","broken","fallen",
-"ghost","eclipse"
+"ghost","eclipse","unknown","bleak","nox","fatal"
 ],
 
 aesthetic:[
 "luna","cloud","moon","velvet","dream","mist",
 "blush","glow","star","bloom","lavender","pearl",
 "muse","sunset","starlit","ivory","aurora",
-"daisy","violet","serene"
+"daisy","violet","serene","angel","flora","rosie"
 ],
 
 cool:[
 "elite","prime","legend","ice","fire","wild",
 "royal","flash","rebel","famous","alpha","super",
 "real","official","iconic","supreme","epic","top",
-"ultra","next"
+"ultra","next","legendary","king","queen","main"
 ]
 
 };
@@ -1330,27 +1475,31 @@ const suffixes={
 
 cute:[
 "xo","xoxo","baby","luv","bby","angel","boo",
-"bun","qt","xx","pie","kiss","love","x","ie"
+"bun","qt","xx","pie","kiss","love","x","ie",
+"rose","bear","fairy"
 ],
 
 gamer:[
 "x","z","fps","fn","yt","tv","gg","op","777",
-"999","clips","szn","pro","live","hq"
+"999","clips","szn","pro","live","hq","v2",
+"edit","aim","plays"
 ],
 
 dark:[
 "666","444","999","xx","void","404","exe","nx",
-"13","zzz","x","00","404x"
+"13","zzz","x","00","404x","dead","nox"
 ],
 
 aesthetic:[
 "xo","moon","luv","cloud","444","222","jpg",
-"wav","core","era","angel","dream"
+"wav","core","era","angel","dream","4444",
+"archive","diary"
 ],
 
 cool:[
 "x","xx","777","999","official","real","hq",
-"one","szn","tv","gg","pro","live","xoxo"
+"one","szn","tv","gg","pro","live","xoxo",
+"edit","v2"
 ]
 
 };
@@ -1358,28 +1507,59 @@ cool:[
 
 const platformSuffixes={
 
-tiktok:["xo","x","444","222","777","luv","era","core","szn","bby","xx"],
+tiktok:[
+"xo","x","444","222","777","luv","era",
+"core","szn","bby","xx","edit","tok"
+],
 
-instagram:["xo","xoxo","jpg","444","222","era","daily","luv","xx"],
+instagram:[
+"xo","xoxo","jpg","444","222","era",
+"daily","luv","xx","archive","gram"
+],
 
-fortnite:["fn","fps","x","z","gg","clips","777","op","pro","yt","tv"],
+fortnite:[
+"fn","fps","x","z","gg","clips","777",
+"op","pro","yt","tv","v2","edit"
+],
 
-roblox:["rbx","x","xo","777","222","444","blox","xx","play","z"],
+roblox:[
+"rbx","x","xo","777","222","444","blox",
+"xx","play","z","rblx"
+],
 
-discord:["x","xo","gg","404","777","222","444","exe","xx","z"]
+discord:[
+"x","xo","gg","404","777","222","444",
+"exe","xx","z","dc"
+]
 
 };
 
 
+const randomWords=[
+
+"luna","nova","moon","angel","shadow",
+"dream","cloud","star","bunny","ghost",
+"blush","velvet","rose","storm","pixel",
+"peach","violet","spark","frost","cherry",
+"mist","aurora","kitty","sunset","snow"
+
+];
+
+
 let selectedStyle="cute";
 let selectedPlatform="tiktok";
+
 let latestNames=[];
 let favorites=[];
+
+let generatedTotal=
+Number(localStorage.getItem("namezyGenerated")||0);
 
 
 try{
 
-favorites=JSON.parse(
+favorites=
+JSON.parse(
 localStorage.getItem("namezyFavorites")||"[]"
 );
 
@@ -1388,13 +1568,18 @@ favorites=[];
 }
 
 }catch{
+
 favorites=[];
+
 }
 
+
+/* ELEMENTS */
 
 const word=document.getElementById("word");
 const generate=document.getElementById("generate");
 const random=document.getElementById("random");
+const heroRandom=document.getElementById("heroRandom");
 const share=document.getElementById("share");
 const results=document.getElementById("results");
 const count=document.getElementById("count");
@@ -1407,9 +1592,17 @@ const copyAll=document.getElementById("copyAll");
 const length=document.getElementById("length");
 const numbers=document.getElementById("numbers");
 const toast=document.getElementById("toast");
+const generatedStat=document.getElementById("generatedStat");
 
 
-function item(arr){
+generatedStat.textContent=generatedTotal;
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function pick(arr){
 
 return arr[
 Math.floor(Math.random()*arr.length)
@@ -1429,9 +1622,9 @@ return value
 }
 
 
-function number(){
+function randomNumber(){
 
-return item([
+return pick([
 "22","24","44","77","99","111",
 "222","333","444","555","777","888","999"
 ]);
@@ -1441,312 +1634,7 @@ return item([
 
 function randomWord(){
 
-return item([
-"luna","nova","moon","angel","shadow",
-"dream","cloud","star","bunny","ghost",
-"blush","velvet","rose","storm","pixel",
-"peach","violet","spark","frost","cherry"
-]);
-
-}
-
-
-function getName(){
-
-let w=clean(word.value);
-
-if(!w){
-w=randomWord();
-}
-
-
-const p=item(prefixes[selectedStyle]);
-
-const s=item([
-...suffixes[selectedStyle],
-...platformSuffixes[selectedPlatform]
-]);
-
-
-let variations=[
-
-p+w+s,
-w+s,
-p+"_"+w,
-w+"_"+s,
-p+w+number(),
-w+number(),
-w+"x"+s,
-"its"+w,
-"im"+w,
-"hey"+w,
-"the"+w,
-"not"+w,
-w+"xo",
-w+"luv",
-w+item(["xx","zz","yx","zx"]),
-p+w,
-w+p,
-"x"+w+"x",
-w+"official"
-
-];
-
-
-let name=item(variations);
-
-
-/* NUMBERS */
-
-if(numbers.value==="many"){
-
-name+=number();
-
-}
-
-else if(
-numbers.value==="some" &&
-Math.random()<.4
-){
-
-name+=number();
-
-}
-
-
-/* PLATFORM */
-
-if(
-selectedPlatform==="fortnite"||
-selectedPlatform==="roblox"
-){
-
-name=name
-.replace(/_/g,"")
-.replace(/[^a-zA-Z0-9]/g,"");
-
-}
-
-
-/* LENGTH */
-
-let max=17;
-
-if(length.value==="short")max=12;
-if(length.value==="long")max=22;
-
-name=name.slice(0,max);
-
-return name;
-
-}
-
-
-function score(name){
-
-let s=60;
-
-if(name.length>=5&&name.length<=15)s+=15;
-
-if(!name.includes("_"))s+=7;
-
-if(/^[a-zA-Z0-9]+$/.test(name))s+=7;
-
-if(name.length<20)s+=5;
-
-s+=Math.floor(Math.random()*7);
-
-return Math.min(99,s);
-
-}
-
-
-function generateNames(){
-
-let arr=[];
-let used=new Set();
-
-let tries=0;
-
-while(arr.length<12&&tries<300){
-
-let n=getName();
-
-if(
-n &&
-!used.has(n.toLowerCase())
-){
-
-used.add(n.toLowerCase());
-arr.push(n);
-
-}
-
-tries++;
-
-}
-
-latestNames=arr;
-
-localStorage.setItem(
-"namezyRecent",
-JSON.stringify(arr)
-);
-
-render(arr);
-renderBest(arr);
-
-}
-
-
-function render(names){
-
-results.innerHTML="";
-
-let filter=search.value
-.toLowerCase()
-.trim();
-
-let filtered=names.filter(
-n=>n.toLowerCase().includes(filter)
-);
-
-count.textContent=
-filtered.length+" namn";
-
-
-filtered.forEach((name,index)=>{
-
-let card=document.createElement("div");
-
-card.className="nameCard";
-
-card.style.animationDelay=
-(index*.03)+"s";
-
-
-let text=document.createElement("div");
-
-text.className="nameText";
-
-
-let title=document.createElement("div");
-
-title.className="name";
-title.textContent=name;
-
-
-let meta=document.createElement("div");
-
-meta.className="meta";
-
-meta.textContent=
-platformName(selectedPlatform)
-+" • "
-+styleName(selectedStyle);
-
-
-let sc=document.createElement("div");
-
-sc.className="score";
-
-sc.textContent=
-"⭐ "+score(name)+"/100";
-
-
-text.appendChild(title);
-text.appendChild(meta);
-text.appendChild(sc);
-
-
-let copy=document.createElement("button");
-
-copy.className="cardBtn";
-copy.textContent="📋";
-
-copy.onclick=()=>copyName(name);
-
-
-let fav=document.createElement("button");
-
-fav.className="cardBtn favorite";
-
-updateFavorite(fav,name);
-
-fav.onclick=()=>{
-
-toggleFavorite(name);
-updateFavorite(fav,name);
-
-};
-
-
-card.appendChild(text);
-card.appendChild(copy);
-card.appendChild(fav);
-
-results.appendChild(card);
-
-});
-
-}
-
-
-function renderBest(names){
-
-bestGrid.innerHTML="";
-
-let top=names
-.map(n=>({
-name:n,
-score:score(n)
-}))
-.sort((a,b)=>b.score-a.score)
-.slice(0,3);
-
-
-top.forEach((x,i)=>{
-
-let card=document.createElement("div");
-
-card.className="bestCard";
-
-card.innerHTML=`
-
-<div class="bestRank">
-#${i+1} BEST MATCH
-</div>
-
-<div class="bestName">
-${escapeHTML(x.name)}
-</div>
-
-<div class="bestScore">
-⭐ ${x.score}/100
-</div>
-
-`;
-
-bestGrid.appendChild(card);
-
-});
-
-
-if(top.length){
-best.classList.add("show");
-}
-
-}
-
-
-function escapeHTML(text){
-
-return text
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+return pick(randomWords);
 
 }
 
@@ -1777,7 +1665,408 @@ cool:"Cool"
 }
 
 
-/* COPY */
+/* =========================
+   GENERATOR
+========================= */
+
+function getName(){
+
+let w=clean(word.value);
+
+if(!w){
+w=randomWord();
+}
+
+
+const p=pick(prefixes[selectedStyle]);
+
+const s=pick([
+...suffixes[selectedStyle],
+...platformSuffixes[selectedPlatform]
+]);
+
+
+let variations=[
+
+p+w+s,
+w+s,
+p+"_"+w,
+w+"_"+s,
+p+w+randomNumber(),
+w+randomNumber(),
+w+"x"+s,
+"its"+w,
+"im"+w,
+"hey"+w,
+"the"+w,
+"not"+w,
+w+"xo",
+w+"luv",
+w+pick(["xx","zz","yx","zx","vx","sz"]),
+p+w,
+w+p,
+"x"+w+"x",
+w+"official",
+"real"+w,
+"its_"+w,
+w+"era",
+w+"core",
+w+"szn"
+
+];
+
+
+let name=pick(variations);
+
+
+/* NUMBERS */
+
+if(numbers.value==="many"){
+
+name+=randomNumber();
+
+}
+
+else if(
+numbers.value==="some" &&
+Math.random()<.4
+){
+
+name+=randomNumber();
+
+}
+
+
+/* PLATFORM CLEANUP */
+
+if(
+selectedPlatform==="fortnite" ||
+selectedPlatform==="roblox"
+){
+
+name=name
+.replace(/_/g,"")
+.replace(/[^a-zA-Z0-9]/g,"");
+
+}
+
+
+/* LENGTH */
+
+let max=17;
+
+if(length.value==="short"){
+max=12;
+}
+
+if(length.value==="long"){
+max=22;
+}
+
+name=name.slice(0,max);
+
+return name;
+
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+function score(name){
+
+let s=60;
+
+if(name.length>=5 && name.length<=15){
+s+=15;
+}
+
+if(!name.includes("_")){
+s+=7;
+}
+
+if(/^[a-zA-Z0-9]+$/.test(name)){
+s+=7;
+}
+
+if(name.length<20){
+s+=5;
+}
+
+if(name.toLowerCase().includes("x")){
+s+=2;
+}
+
+s+=Math.floor(Math.random()*5);
+
+return Math.min(99,s);
+
+}
+
+
+/* =========================
+   GENERATE
+========================= */
+
+function generateNames(){
+
+let arr=[];
+let used=new Set();
+
+let tries=0;
+
+while(arr.length<15 && tries<500){
+
+let n=getName();
+
+if(
+n &&
+!used.has(n.toLowerCase())
+){
+
+used.add(n.toLowerCase());
+arr.push(n);
+
+}
+
+tries++;
+
+}
+
+latestNames=arr;
+
+generatedTotal+=arr.length;
+
+localStorage.setItem(
+"namezyGenerated",
+generatedTotal
+);
+
+generatedStat.textContent=generatedTotal;
+
+render(arr);
+renderBest(arr);
+
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function render(names){
+
+results.innerHTML="";
+
+let filter=
+search.value
+.toLowerCase()
+.trim();
+
+let filtered=
+names.filter(
+n=>n.toLowerCase().includes(filter)
+);
+
+count.textContent=
+filtered.length+" namn";
+
+
+if(!filtered.length){
+
+results.innerHTML=`
+
+<div class="nameCard">
+
+<div class="nameText">
+
+<div class="name">
+Inga namn hittades
+</div>
+
+<div class="meta">
+Testa en annan sökning.
+</div>
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+filtered.forEach((name,index)=>{
+
+let card=
+document.createElement("div");
+
+card.className="nameCard";
+
+card.style.animationDelay=
+(index*.025)+"s";
+
+
+let text=
+document.createElement("div");
+
+text.className="nameText";
+
+
+let title=
+document.createElement("div");
+
+title.className="name";
+
+title.textContent=name;
+
+
+let meta=
+document.createElement("div");
+
+meta.className="meta";
+
+meta.textContent=
+platformName(selectedPlatform)
++" • "
++styleName(selectedStyle);
+
+
+let sc=
+document.createElement("div");
+
+sc.className="score";
+
+sc.textContent=
+"⭐ "+score(name)+"/100";
+
+
+text.appendChild(title);
+text.appendChild(meta);
+text.appendChild(sc);
+
+
+let copy=
+document.createElement("button");
+
+copy.className="cardBtn";
+
+copy.textContent="📋";
+
+copy.setAttribute(
+"aria-label",
+"Kopiera "+name
+);
+
+copy.onclick=
+()=>copyName(name);
+
+
+let fav=
+document.createElement("button");
+
+fav.className=
+"cardBtn favorite";
+
+updateFavorite(fav,name);
+
+fav.onclick=()=>{
+
+toggleFavorite(name);
+
+updateFavorite(fav,name);
+
+};
+
+
+card.appendChild(text);
+card.appendChild(copy);
+card.appendChild(fav);
+
+results.appendChild(card);
+
+});
+
+}
+
+
+/* =========================
+   BEST MATCH
+========================= */
+
+function renderBest(names){
+
+bestGrid.innerHTML="";
+
+
+let top=names
+.map(n=>({
+name:n,
+score:score(n)
+}))
+.sort((a,b)=>b.score-a.score)
+.slice(0,3);
+
+
+top.forEach((x,i)=>{
+
+let card=
+document.createElement("div");
+
+card.className="bestCard";
+
+
+let rank=
+document.createElement("div");
+
+rank.className="bestRank";
+
+rank.textContent=
+"#"+(i+1)+" BEST MATCH";
+
+
+let name=
+document.createElement("div");
+
+name.className="bestName";
+
+name.textContent=x.name;
+
+
+let sc=
+document.createElement("div");
+
+sc.className="bestScore";
+
+sc.textContent=
+"⭐ "+x.score+"/100";
+
+
+card.appendChild(rank);
+card.appendChild(name);
+card.appendChild(sc);
+
+bestGrid.appendChild(card);
+
+});
+
+
+if(top.length){
+
+best.classList.add("show");
+
+}
+
+}
+
+
+/* =========================
+   COPY
+========================= */
 
 async function copyName(name){
 
@@ -1789,7 +2078,8 @@ showToast("Kopierat! ✓");
 
 }catch{
 
-let area=document.createElement("textarea");
+let area=
+document.createElement("textarea");
 
 area.value=name;
 
@@ -1818,16 +2108,26 @@ return;
 
 }
 
-await copyName(
+try{
+
+await navigator.clipboard.writeText(
 latestNames.join("\n")
 );
 
 showToast("Alla namn kopierade! ✓");
 
+}catch{
+
+showToast("Kunde inte kopiera");
+
+}
+
 }
 
 
-/* FAVORITES */
+/* =========================
+   FAVORITES
+========================= */
 
 function isFavorite(name){
 
@@ -1841,11 +2141,13 @@ function updateFavorite(button,name){
 if(isFavorite(name)){
 
 button.classList.add("active");
+
 button.textContent="♥";
 
 }else{
 
 button.classList.remove("active");
+
 button.textContent="♡";
 
 }
@@ -1857,17 +2159,22 @@ function toggleFavorite(name){
 
 if(isFavorite(name)){
 
-favorites=favorites.filter(
+favorites=
+favorites.filter(
 x=>x!==name
 );
 
-showToast("Borttagen från favoriter");
+showToast(
+"Borttagen från favoriter"
+);
 
 }else{
 
 favorites.push(name);
 
-showToast("Sparad som favorit ❤️");
+showToast(
+"Sparad som favorit ❤️"
+);
 
 }
 
@@ -1885,6 +2192,7 @@ function renderFavorites(){
 
 favoriteList.innerHTML="";
 
+
 if(!favorites.length){
 
 favoritesBox.classList.remove("show");
@@ -1893,49 +2201,58 @@ return;
 
 }
 
+
 favoritesBox.classList.add("show");
 
 
 favorites.forEach(name=>{
 
-let itemBox=document.createElement("div");
+let box=
+document.createElement("div");
 
-itemBox.className="favoriteItem";
+box.className="favoriteItem";
 
 
-let span=document.createElement("span");
+let span=
+document.createElement("span");
 
 span.textContent=name;
 
 
-let copy=document.createElement("button");
+let copy=
+document.createElement("button");
 
 copy.textContent="📋";
 
-copy.onclick=()=>copyName(name);
+copy.onclick=
+()=>copyName(name);
 
 
-let remove=document.createElement("button");
+let remove=
+document.createElement("button");
 
 remove.textContent="×";
 
-remove.onclick=()=>toggleFavorite(name);
+remove.onclick=
+()=>toggleFavorite(name);
 
 
-itemBox.appendChild(span);
-itemBox.appendChild(copy);
-itemBox.appendChild(remove);
+box.appendChild(span);
+box.appendChild(copy);
+box.appendChild(remove);
 
-favoriteList.appendChild(itemBox);
+favoriteList.appendChild(box);
 
 });
 
 }
 
 
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
 
-let timer;
+let toastTimer;
 
 function showToast(message){
 
@@ -1943,17 +2260,21 @@ toast.textContent=message;
 
 toast.classList.add("show");
 
-clearTimeout(timer);
+clearTimeout(toastTimer);
 
-timer=setTimeout(
-()=>toast.classList.remove("show"),
+toastTimer=setTimeout(
+()=>{
+toast.classList.remove("show");
+},
 1800
 );
 
 }
 
 
-/* STYLE */
+/* =========================
+   STYLE BUTTONS
+========================= */
 
 document
 .querySelectorAll(".choice")
@@ -1963,11 +2284,14 @@ btn.onclick=()=>{
 
 document
 .querySelectorAll(".choice")
-.forEach(x=>x.classList.remove("active"));
+.forEach(x=>
+x.classList.remove("active")
+);
 
 btn.classList.add("active");
 
-selectedStyle=btn.dataset.style;
+selectedStyle=
+btn.dataset.style;
 
 generateNames();
 
@@ -1976,7 +2300,9 @@ generateNames();
 });
 
 
-/* PLATFORM */
+/* =========================
+   PLATFORM BUTTONS
+========================= */
 
 document
 .querySelectorAll(".platform")
@@ -1986,11 +2312,14 @@ btn.onclick=()=>{
 
 document
 .querySelectorAll(".platform")
-.forEach(x=>x.classList.remove("active"));
+.forEach(x=>
+x.classList.remove("active")
+);
 
 btn.classList.add("active");
 
-selectedPlatform=btn.dataset.platform;
+selectedPlatform=
+btn.dataset.platform;
 
 generateNames();
 
@@ -1999,7 +2328,9 @@ generateNames();
 });
 
 
-/* QUICK */
+/* =========================
+   QUICK BUTTONS
+========================= */
 
 document
 .querySelectorAll(".quick button")
@@ -2019,7 +2350,7 @@ if(target){
 target.click();
 
 document
-.querySelector(".generator")
+.getElementById("generatorSection")
 .scrollIntoView({
 behavior:"smooth"
 });
@@ -2031,9 +2362,41 @@ behavior:"smooth"
 });
 
 
-/* BUTTONS */
+/* =========================
+   NAVIGATION
+========================= */
 
-generate.onclick=generateNames;
+document
+.querySelectorAll("[data-scroll]")
+.forEach(btn=>{
+
+btn.onclick=()=>{
+
+let target=
+document.getElementById(
+btn.dataset.scroll
+);
+
+if(target){
+
+target.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+};
+
+});
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+generate.onclick=
+generateNames;
+
 
 random.onclick=()=>{
 
@@ -2044,17 +2407,43 @@ generateNames();
 };
 
 
-copyAll.onclick=copyEverything;
+heroRandom.onclick=()=>{
+
+word.value="";
+
+document
+.getElementById("generatorSection")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+setTimeout(
+generateNames,
+350
+);
+
+};
 
 
-/* SHARE */
+copyAll.onclick=
+copyEverything;
+
+
+/* =========================
+   SHARE
+========================= */
 
 share.onclick=async()=>{
 
 let shareData={
+
 title:"Namezy",
-text:"Jag hittade den här gratis username generatorn!",
+
+text:
+"Jag hittade Namezy – en gratis username generator!",
+
 url:location.href
+
 };
 
 
@@ -2062,13 +2451,19 @@ try{
 
 if(navigator.share){
 
-await navigator.share(shareData);
+await navigator.share(
+shareData
+);
 
 }else{
 
-await navigator.clipboard.writeText(location.href);
+await navigator.clipboard.writeText(
+location.href
+);
 
-showToast("Länk kopierad! ✓");
+showToast(
+"Länk kopierad! ✓"
+);
 
 }
 
@@ -2077,32 +2472,49 @@ showToast("Länk kopierad! ✓");
 };
 
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 search.addEventListener(
 "input",
-()=>render(latestNames)
+()=>{
+render(latestNames);
+}
 );
 
 
-/* ENTER */
+/* =========================
+   ENTER
+========================= */
 
 word.addEventListener(
 "keydown",
 e=>{
 
 if(e.key==="Enter"){
+
 generateNames();
+
 }
 
 });
 
 
-length.onchange=generateNames;
-numbers.onchange=generateNames;
+/* =========================
+   OPTIONS
+========================= */
+
+length.onchange=
+generateNames;
+
+numbers.onchange=
+generateNames;
 
 
-/* START */
+/* =========================
+   START
+========================= */
 
 renderFavorites();
 
