@@ -453,118 +453,282 @@ Kopierat!
 
 <script>
 
-const nameParts = {
+let selectedStyle = "cute";
+let selectedPlatform = "social";
+let lastNames = [];
+
+const parts = {
   cute: [
-    "angel", "bunny", "dolly", "fairy", "honey", "lily",
-    "peach", "bloom", "sweet", "lovely", "baby", "cherry",
-    "cloud", "pink", "star", "rosie", "dreamy", "cutie"
+    "baby","bby","luv","angel","fairy","cutie","sweet",
+    "doll","bunni","love","pink","peach","rosie","xo"
   ],
 
   gamer: [
-    "x", "shadow", "ghost", "venom", "nexus", "storm",
-    "zero", "viper", "frost", "blaze", "phantom", "nova",
-    "reaper", "raven", "clutch", "sniper", "pixel", "legend"
+    "vx","vex","fps","gg","clutch","zone","pro","exe",
+    "yt","plays","aim","edit","fn","x","zz"
   ],
 
   dark: [
-    "void", "dark", "lost", "night", "dead", "sin",
-    "lunar", "demon", "grim", "shade", "black", "noir",
-    "blood", "midnight", "hollow", "obsidian"
+    "void","shadow","night","ghost","lost","noir","zero",
+    "exe","shade","grim","dark","404","x","666"
   ],
 
   aesthetic: [
-    "luna", "muse", "velvet", "ivory", "venus", "aurora",
-    "eden", "opal", "serene", "swan", "silk", "moon",
-    "cloudy", "flora", "celeste", "dream"
+    "moon","cloud","glow","dream","star","luv","wave",
+    "mist","sky","luna","flora","velvet","xo","angel"
   ],
 
   cool: [
-    "vibe", "wave", "rush", "drip", "flex", "elite",
-    "prime", "icy", "wild", "rare", "fresh", "icon",
-    "famous", "viral", "supreme", "legend"
+    "wrld","wave","elite","zone","vibe","nova","rush",
+    "icon","rare","flex","icy","prime","x","vx"
   ]
 };
 
 const endings = [
-  "xo", "xx", "xoxo", "v", "z", "zy", "qt",
-  "777", "999", "444", "11", "22", "01",
-  "01", "x1", "7x", "zz"
+  "",
+  "x",
+  "xx",
+  "xo",
+  "v",
+  "z",
+  "zy",
+  "01",
+  "07",
+  "11",
+  "22",
+  "77",
+  "99",
+  "444",
+  "777"
 ];
+
+function cleanName(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9åäö]/gi, "")
+    .slice(0, 15);
+}
 
 function randomItem(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function createUsername(input, style) {
-  const base = input
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]/g, "");
+function makeName(word, style, platform) {
+  const p = parts[style];
 
-  const words = nameParts[style] || nameParts.cute;
-  const word = randomItem(words);
-  const ending = randomItem(endings);
-
-  const variations = [
-    base + word,
-    word + base,
-    base + ending,
-    word + ending,
-    base + word + ending,
-    word + base + ending,
-    base + "_" + word,
-    word + "_" + base,
-    base + "." + word,
-    word + "." + ending
+  const ideas = [
+    word + randomItem(p),
+    randomItem(p) + word,
+    word + randomItem(endings),
+    randomItem(p) + randomItem(endings),
+    word + "x" + randomItem(p),
+    "its" + word,
+    word + "xo",
+    word + "v" + randomItem(p),
+    randomItem(p) + word + randomItem(endings),
+    word + "_" + randomItem(p),
+    word + "." + randomItem(p),
+    "x" + word + randomItem(endings)
   ];
 
-  return randomItem(variations);
+  if (platform === "fortnite") {
+    ideas.push(
+      word + "FN",
+      word + "FT",
+      word + "clips",
+      word + "plays",
+      word + "edit"
+    );
+  }
+
+  if (platform === "roblox") {
+    ideas.push(
+      word + "RBX",
+      "its" + word,
+      word + "plays",
+      word + "YT"
+    );
+  }
+
+  if (platform === "discord") {
+    ideas.push(
+      word + "hub",
+      "x" + word,
+      word + "v",
+      word + "zone"
+    );
+  }
+
+  return randomItem(ideas);
 }
 
 function generateNames() {
-  const input = document.querySelector("input");
+  const input = document.getElementById("word");
+  const list = document.getElementById("nameList");
 
-  if (!input || !input.value.trim()) {
-    showToast("Skriv in ett namn först!");
+  if (!input || !list) {
     return;
   }
 
-  const styleButton = document.querySelector(
-    "#styleChoices .choice.active"
-  );
+  const word = cleanName(input.value);
 
-  const style =
-    styleButton?.dataset?.style || "cute";
-
-  const results = [];
-  const used = new Set();
-
-  while (results.length < 8) {
-    const username = createUsername(input.value, style);
-
-    if (!used.has(username)) {
-      used.add(username);
-      results.push(username);
-    }
+  if (!word) {
+    showToast("Skriv in ett namn först!");
+    input.focus();
+    return;
   }
 
-  const resultElements = document.querySelectorAll(
-    ".result, .name-result, [data-result]"
-  );
+  let styles = [selectedStyle];
 
-  resultElements.forEach((element, index) => {
-    if (results[index]) {
-      element.textContent = results[index];
+  if (selectedStyle === "any") {
+    styles = Object.keys(parts);
+  }
+
+  const names = new Set();
+
+  let attempts = 0;
+
+  while (names.size < 10 && attempts < 200) {
+    const style = randomItem(styles);
+    const name = makeName(word, style, selectedPlatform);
+
+    if (name && name.length >= 3) {
+      names.add(name);
     }
-  });
 
-  if (resultElements.length === 0) {
-    console.log("Namn:", results);
+    attempts++;
+  }
+
+  lastNames = [...names];
+
+  renderNames();
+
+  document
+    .getElementById("results")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+}
+
+function renderNames() {
+  const list = document.getElementById("nameList");
+
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  let favorites = [];
+
+  try {
+    favorites = JSON.parse(
+      localStorage.getItem("namezyFav") || "[]"
+    );
+  } catch {
+    favorites = [];
+  }
+
+  lastNames.forEach(name => {
+    const box = document.createElement("div");
+    box.className = "name";
+
+    const text = document.createElement("span");
+    text.textContent = name;
+
+    const buttons = document.createElement("span");
+
+    const heart = document.createElement("button");
+    heart.className = "heart";
+    heart.textContent = "♥";
+
+    if (favorites.includes(name)) {
+      heart.classList.add("saved");
+    }
+
+    heart.onclick = () => {
+      toggleFavorite(name, heart);
+    };
+
+    const copy = document.createElement("button");
+    copy.className = "copy";
+    copy.textContent = "⧉";
+
+    copy.onclick = () => {
+      copyName(name, copy);
+    };
+
+    buttons.appendChild(heart);
+    buttons.appendChild(copy);
+
+    box.appendChild(text);
+    box.appendChild(buttons);
+
+    list.appendChild(box);
+  });
+}
+
+function toggleFavorite(name, button) {
+  let favorites = [];
+
+  try {
+    favorites = JSON.parse(
+      localStorage.getItem("namezyFav") || "[]"
+    );
+  } catch {
+    favorites = [];
+  }
+
+  if (favorites.includes(name)) {
+    favorites = favorites.filter(x => x !== name);
+    button.classList.remove("saved");
+    showToast("Borttagen från favoriter");
+  } else {
+    favorites.push(name);
+    button.classList.add("saved");
+    showToast("Sparat i favoriter!");
+  }
+
+  localStorage.setItem(
+    "namezyFav",
+    JSON.stringify(favorites)
+  );
+}
+
+async function copyName(name, button) {
+  try {
+    await navigator.clipboard.writeText(name);
+
+    button.textContent = "✓";
+
+    setTimeout(() => {
+      button.textContent = "⧉";
+    }, 1000);
+
+    showToast("Kopierat!");
+  } catch {
+    showToast("Kunde inte kopiera automatiskt");
+  }
+}
+
+async function copyAll() {
+  if (!lastNames.length) {
+    showToast("Generera namn först!");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(
+      lastNames.join("\n")
+    );
+
+    showToast("Alla namn kopierade!");
+  } catch {
+    showToast("Kunde inte kopiera automatiskt");
   }
 }
 
 function showToast(text) {
-  const toast = document.querySelector("#toast");
+  const toast = document.getElementById("toast");
 
   if (!toast) return;
 
@@ -576,29 +740,41 @@ function showToast(text) {
   }, 1500);
 }
 
-document.querySelectorAll("#styleChoices .choice").forEach(button => {
-  button.addEventListener("click", () => {
-    document
-      .querySelectorAll("#styleChoices .choice")
-      .forEach(x => x.classList.remove("active"));
+/* Stil-knappar */
+document
+  .querySelectorAll("#styleChoices .choice")
+  .forEach(button => {
+    button.onclick = () => {
 
-    button.classList.add("active");
+      document
+        .querySelectorAll("#styleChoices .choice")
+        .forEach(x => {
+          x.classList.remove("active");
+        });
+
+      button.classList.add("active");
+
+      selectedStyle = button.dataset.style;
+    };
   });
-});
 
-document.querySelectorAll("button").forEach(button => {
-  const text = button.textContent.toLowerCase();
+/* Plattform-knappar */
+document
+  .querySelectorAll("#platformChoices .choice")
+  .forEach(button => {
+    button.onclick = () => {
 
-  if (
-    text.includes("generera") ||
-    text.includes("generate") ||
-    text.includes("skapa")
-  ) {
-    button.addEventListener("click", generateNames);
-  }
-});
+      document
+        .querySelectorAll("#platformChoices .choice")
+        .forEach(x => {
+          x.classList.remove("active");
+        });
 
-generateNames();
+      button.classList.add("active");
+
+      selectedPlatform = button.dataset.platform;
+    };
+  });
 
 </script>
 
