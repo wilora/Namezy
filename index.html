@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#12091c">
+<meta name="theme-color" content="#0b0710">
 
-<title>Namezy – Username Generator</title>
+<title>Namezy – Gratis Username Generator</title>
+
+<meta name="description"
+content="Namezy är en gratis username generator för TikTok, Instagram, Fortnite, Roblox, Discord och gaming. Skapa unika användarnamn direkt.">
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -15,36 +20,71 @@
 }
 
 :root{
-  --bg:#0b0710;
+  --bg:#09070d;
+  --bg2:#110b17;
   --card:#15101d;
   --card2:#1b1424;
-  --border:rgba(255,255,255,.10);
+  --border:rgba(255,255,255,.11);
   --text:#fff;
   --muted:#a99eb2;
   --pink:#e58cff;
-  --pink2:#b85cff;
-  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --purple:#a94dff;
+  --pinkSoft:rgba(229,140,255,.14);
+  --shadow:0 25px 70px rgba(0,0,0,.4);
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   min-height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
   background:
-    radial-gradient(circle at 50% -10%,rgba(214,105,255,.22),transparent 35%),
-    radial-gradient(circle at 100% 40%,rgba(129,48,196,.15),transparent 30%),
-    var(--bg);
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(214,105,255,.25),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 100% 35%,
+      rgba(129,48,196,.16),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #0a0710,
+      #0d0812 45%,
+      #09070d
+    );
+
   color:var(--text);
   overflow-x:hidden;
 }
 
 button,
-input{
+input,
+select{
   font:inherit;
 }
 
 button{
-  cursor:pointer;
   border:0;
+  cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  padding:23px 0 12px;
 }
 
 .container{
@@ -52,236 +92,450 @@ button{
   margin:auto;
 }
 
-/* HEADER */
-
-header{
-  padding:25px 0 10px;
-  position:relative;
-}
-
 .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
 }
 
 .logo{
   display:flex;
   align-items:center;
   gap:9px;
-  font-size:25px;
+
+  font-size:27px;
   font-weight:900;
-  letter-spacing:-1px;
+  letter-spacing:-1.5px;
+}
+
+.logoIcon{
+  font-size:26px;
 }
 
 .logo span{
   color:var(--pink);
 }
 
-.logoIcon{
-  font-size:25px;
-}
-
 .badge{
-  padding:8px 13px;
+  padding:8px 14px;
+
   border:1px solid var(--border);
-  background:rgba(255,255,255,.04);
   border-radius:999px;
+
+  background:rgba(255,255,255,.04);
+
   color:#d9c9df;
   font-size:12px;
+  font-weight:700;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
   text-align:center;
-  padding:65px 0 35px;
+  padding:68px 0 38px;
 }
 
 .eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:8px;
+  gap:10px;
+
   color:var(--pink);
-  font-weight:800;
+
   font-size:13px;
-  letter-spacing:3px;
-  margin-bottom:17px;
+  font-weight:900;
+  letter-spacing:4px;
+
+  margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(48px,10vw,88px);
-  line-height:.95;
-  letter-spacing:-4px;
-  background:linear-gradient(135deg,#fff,#f0a5ff 50%,#a94dff);
+  font-size:clamp(55px,11vw,92px);
+
+  line-height:.92;
+  letter-spacing:-5px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f0a5ff 48%,
+      #a94dff
+    );
+
   -webkit-background-clip:text;
   background-clip:text;
+
   color:transparent;
 }
 
 .hero p{
-  max-width:650px;
-  margin:22px auto 0;
+  max-width:690px;
+
+  margin:24px auto 0;
+
   color:var(--muted);
+
   font-size:17px;
   line-height:1.6;
 }
 
-/* GENERATOR */
+/* PLATFORM QUICK LINKS */
+
+.quickPlatforms{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+
+  margin-top:28px;
+}
+
+.quickPlatform{
+  padding:12px 18px;
+
+  background:#11101a;
+
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:999px;
+
+  color:#ddd4e1;
+
+  font-weight:700;
+
+  transition:.2s;
+}
+
+.quickPlatform:hover{
+  transform:translateY(-2px);
+  border-color:var(--pink);
+  background:var(--pinkSoft);
+}
+
+/* =========================
+   GENERATOR
+========================= */
 
 .generator{
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.07),
-    rgba(255,255,255,.025)
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.025)
+    );
+
   border:1px solid var(--border);
   border-radius:28px;
-  padding:22px;
+
+  padding:23px;
+
   box-shadow:var(--shadow);
+
   backdrop-filter:blur(20px);
 }
 
 .label{
   display:block;
-  font-size:13px;
-  font-weight:800;
-  color:#ddd1e4;
-  margin-bottom:9px;
-}
 
-.inputWrap{
-  position:relative;
+  font-size:14px;
+  font-weight:900;
+
+  color:#e7ddea;
+
+  margin-bottom:10px;
 }
 
 .input{
   width:100%;
-  padding:17px 18px;
-  border-radius:15px;
-  border:1px solid rgba(255,255,255,.13);
-  background:#0e0a14;
+
+  padding:18px;
+
+  border-radius:16px;
+
+  border:1px solid rgba(255,255,255,.14);
+
+  background:#0d0a13;
+
   color:#fff;
+
   outline:none;
+
   transition:.2s;
 }
 
 .input:focus{
   border-color:var(--pink);
-  box-shadow:0 0 0 4px rgba(229,140,255,.10);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(229,140,255,.09);
 }
 
 .input::placeholder{
-  color:#655b6c;
+  color:#665d6d;
 }
 
-/* CHOICES */
+/* =========================
+   TITLES
+========================= */
 
 .sectionTitle{
+  margin:25px 0 12px;
+
   font-size:14px;
   font-weight:900;
-  margin:25px 0 12px;
 }
+
+/* =========================
+   STYLE BUTTONS
+========================= */
 
 .choices{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+
+  grid-template-columns:
+    repeat(5,1fr);
+
   gap:9px;
 }
 
 .choice{
   padding:14px 8px;
-  background:#100c16;
-  color:#bcb0c4;
-  border:1px solid var(--border);
+
   border-radius:14px;
+
+  border:1px solid var(--border);
+
+  background:#100c16;
+
+  color:#bcb0c4;
+
+  font-weight:750;
+
   transition:.2s;
-  font-weight:700;
 }
 
 .choice:hover{
   transform:translateY(-2px);
-  border-color:rgba(229,140,255,.45);
+
+  border-color:
+    rgba(229,140,255,.45);
 }
 
 .choice.active{
-  background:linear-gradient(
-    135deg,
-    rgba(229,140,255,.20),
-    rgba(184,92,255,.10)
-  );
+  background:
+    linear-gradient(
+      135deg,
+      rgba(229,140,255,.22),
+      rgba(184,92,255,.11)
+    );
+
   color:#fff;
+
   border-color:var(--pink);
-  box-shadow:0 0 20px rgba(229,140,255,.10);
+
+  box-shadow:
+    0 0 22px
+    rgba(229,140,255,.12);
 }
 
-/* PLATFORM */
+/* =========================
+   PLATFORM
+========================= */
 
 .platforms{
-  display:flex;
-  flex-wrap:wrap;
+  display:grid;
+
+  grid-template-columns:
+    repeat(5,1fr);
+
   gap:9px;
 }
 
 .platform{
-  flex:1;
-  min-width:120px;
-  padding:13px 12px;
+  padding:14px 8px;
+
   border-radius:14px;
+
   border:1px solid var(--border);
+
   background:#100c16;
+
   color:#bcb0c4;
-  font-weight:700;
+
+  font-weight:750;
+
   transition:.2s;
 }
 
-.platform.active{
-  background:rgba(229,140,255,.13);
-  color:#fff;
-  border-color:var(--pink);
+.platform:hover{
+  transform:translateY(-2px);
 }
 
-/* BUTTON */
+.platform.active{
+  background:
+    rgba(229,140,255,.14);
+
+  color:#fff;
+
+  border-color:var(--pink);
+
+  box-shadow:
+    0 0 18px
+    rgba(229,140,255,.08);
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:12px;
+
+  margin-top:25px;
+}
+
+.optionBox{
+  background:#100c16;
+
+  border:1px solid var(--border);
+
+  border-radius:15px;
+
+  padding:14px;
+}
+
+.optionLabel{
+  display:block;
+
+  color:#9e92a6;
+
+  font-size:11px;
+  font-weight:800;
+
+  margin-bottom:8px;
+}
+
+.optionSelect{
+  width:100%;
+
+  background:#17111e;
+
+  color:#fff;
+
+  border:1px solid rgba(255,255,255,.12);
+
+  border-radius:10px;
+
+  padding:10px;
+
+  outline:none;
+}
+
+/* =========================
+   GENERATE BUTTON
+========================= */
 
 .generate{
   width:100%;
-  margin-top:24px;
+
+  margin-top:22px;
+
   padding:18px;
+
   border-radius:16px;
-  background:linear-gradient(135deg,#e58cff,#a84cff);
+
+  background:
+    linear-gradient(
+      135deg,
+      #e58cff,
+      #a84cff
+    );
+
   color:#fff;
+
   font-size:17px;
   font-weight:900;
-  box-shadow:0 12px 30px rgba(184,92,255,.25);
+
+  box-shadow:
+    0 13px 35px
+    rgba(184,92,255,.27);
+
   transition:.2s;
 }
 
 .generate:hover{
   transform:translateY(-2px);
-  box-shadow:0 15px 35px rgba(184,92,255,.35);
+
+  box-shadow:
+    0 17px 40px
+    rgba(184,92,255,.38);
 }
 
 .generate:active{
   transform:scale(.98);
 }
 
-/* RESULTS */
+/* =========================
+   RESULTS HEADER
+========================= */
 
 .resultsHeader{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
-  margin:30px 0 13px;
+
+  gap:10px;
+
+  margin:32px 0 13px;
 }
 
 .resultsHeader h2{
-  font-size:20px;
+  font-size:21px;
 }
 
 .count{
   color:var(--muted);
+
   font-size:13px;
 }
+
+/* COPY ALL */
+
+.copyAll{
+  padding:9px 13px;
+
+  background:#17101f;
+
+  color:#ddd3e2;
+
+  border:1px solid var(--border);
+
+  border-radius:10px;
+
+  font-size:12px;
+  font-weight:800;
+
+  transition:.2s;
+}
+
+.copyAll:hover{
+  border-color:var(--pink);
+  color:#fff;
+}
+
+/* =========================
+   RESULTS
+========================= */
 
 .results{
   display:grid;
@@ -290,19 +544,46 @@ header{
 
 .nameCard{
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
   padding:15px;
-  background:rgba(255,255,255,.045);
+
+  background:
+    rgba(255,255,255,.045);
+
   border:1px solid var(--border);
+
   border-radius:17px;
+
   transition:.2s;
+
+  animation:
+    fadeUp .35s ease both;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .nameCard:hover{
   transform:translateY(-2px);
-  border-color:rgba(229,140,255,.3);
-  background:rgba(255,255,255,.065);
+
+  border-color:
+    rgba(229,140,255,.3);
+
+  background:
+    rgba(255,255,255,.065);
 }
 
 .nameText{
@@ -313,24 +594,51 @@ header{
 .name{
   font-size:17px;
   font-weight:850;
+
   word-break:break-all;
 }
 
 .meta{
-  margin-top:4px;
+  margin-top:5px;
+
   color:#817688;
+
   font-size:11px;
 }
 
+.score{
+  display:inline-flex;
+
+  margin-top:7px;
+
+  padding:4px 7px;
+
+  border-radius:7px;
+
+  background:rgba(229,140,255,.09);
+
+  color:#d79cff;
+
+  font-size:10px;
+  font-weight:900;
+}
+
 .cardBtn{
-  width:42px;
-  height:42px;
+  width:43px;
+  height:43px;
+
   border-radius:12px;
+
   background:#21182a;
+
   color:#fff;
+
   border:1px solid var(--border);
+
   font-size:17px;
+
   flex-shrink:0;
+
   transition:.2s;
 }
 
@@ -338,15 +646,19 @@ header{
   background:#30203b;
 }
 
-.cardBtn.favorite.active{
+.favorite.active{
   color:#ff78c8;
+
   border-color:#ff78c8;
 }
 
-/* FAVORITES */
+/* =========================
+   FAVORITES
+========================= */
 
 .favorites{
-  margin-top:25px;
+  margin-top:26px;
+
   display:none;
 }
 
@@ -357,110 +669,201 @@ header{
 .favoriteList{
   display:flex;
   flex-wrap:wrap;
+
   gap:8px;
 }
 
 .favoriteItem{
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:8px;
+
   padding:10px 12px;
+
   border-radius:12px;
+
   background:#17101e;
+
   border:1px solid var(--border);
+
   font-size:13px;
 }
 
 .favoriteItem button{
   background:none;
+
   color:#9b8fa2;
+
   font-size:15px;
+
+  padding:0 2px;
 }
 
-/* FEATURES */
+/* =========================
+   FEATURES
+========================= */
 
 .features{
-  padding:75px 0;
+  padding:78px 0;
 }
 
 .featuresTitle{
   text-align:center;
-  margin-bottom:25px;
+
+  margin-bottom:27px;
 }
 
 .featuresTitle h2{
-  font-size:32px;
+  font-size:33px;
 }
 
 .featuresTitle p{
-  margin-top:8px;
+  margin-top:9px;
+
   color:var(--muted);
 }
 
 .featureGrid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:13px;
 }
 
 .feature{
-  padding:23px;
+  padding:24px;
+
   border-radius:20px;
-  background:rgba(255,255,255,.035);
+
+  background:
+    rgba(255,255,255,.035);
+
   border:1px solid var(--border);
 }
 
 .featureIcon{
-  font-size:25px;
+  font-size:26px;
+
   margin-bottom:14px;
 }
 
 .feature h3{
   font-size:16px;
+
   margin-bottom:7px;
 }
 
 .feature p{
   color:var(--muted);
+
   font-size:13px;
-  line-height:1.5;
+
+  line-height:1.55;
 }
 
-/* TOAST */
+/* =========================
+   SEO SECTION
+========================= */
+
+.info{
+  padding:0 0 65px;
+}
+
+.infoBox{
+  padding:27px;
+
+  border-radius:22px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  border:1px solid var(--border);
+}
+
+.infoBox h2{
+  font-size:22px;
+
+  margin-bottom:12px;
+}
+
+.infoBox h3{
+  font-size:16px;
+
+  margin-top:20px;
+  margin-bottom:7px;
+}
+
+.infoBox p{
+  color:var(--muted);
+
+  font-size:14px;
+
+  line-height:1.65;
+}
+
+/* =========================
+   TOAST
+========================= */
 
 .toast{
   position:fixed;
+
   left:50%;
   bottom:25px;
-  transform:translate(-50%,30px);
+
+  transform:
+    translate(-50%,30px);
+
   background:#fff;
+
   color:#120b18;
+
   padding:12px 18px;
+
   border-radius:999px;
+
   font-size:13px;
   font-weight:850;
+
   opacity:0;
+
   pointer-events:none;
+
   transition:.25s;
+
   z-index:100;
-  box-shadow:0 10px 35px rgba(0,0,0,.4);
+
+  box-shadow:
+    0 10px 35px
+    rgba(0,0,0,.4);
 }
 
 .toast.show{
   opacity:1;
-  transform:translate(-50%,0);
+
+  transform:
+    translate(-50%,0);
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   text-align:center;
-  padding:20px 0 35px;
+
+  padding:20px 0 38px;
+
   color:#756a7c;
+
   font-size:12px;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -477,26 +880,40 @@ footer{
   }
 
   .hero{
-    padding:55px 0 28px;
+    padding:54px 0 30px;
   }
 
   .hero h1{
     font-size:58px;
+
     letter-spacing:-3px;
   }
 
   .hero p{
     font-size:15px;
+
     padding:0 8px;
+  }
+
+  .quickPlatforms{
+    gap:8px;
+  }
+
+  .quickPlatform{
+    padding:10px 14px;
+
+    font-size:13px;
   }
 
   .generator{
     padding:16px;
+
     border-radius:22px;
   }
 
   .choices{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .choice:last-child{
@@ -504,12 +921,16 @@ footer{
   }
 
   .platforms{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .platform{
-    min-width:0;
+    padding:13px 7px;
+  }
+
+  .options{
+    grid-template-columns:1fr;
   }
 
   .featureGrid{
@@ -523,210 +944,593 @@ footer{
   .featuresTitle h2{
     font-size:27px;
   }
+
+  .resultsHeader{
+    flex-wrap:wrap;
+  }
+
+  .copyAll{
+    margin-left:auto;
+  }
+
 }
+
+/* SMALL PHONES */
+
+@media(max-width:390px){
+
+  .logo{
+    font-size:24px;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .name{
+    font-size:15px;
+  }
+
+  .cardBtn{
+    width:39px;
+    height:39px;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header>
-  <div class="container">
-    <div class="nav">
-      <div class="logo">
-        <div class="logoIcon">♕</div>
-        Name<span>zy.</span>
-      </div>
 
-      <div class="badge">100% gratis ✨</div>
-    </div>
-  </div>
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="container">
+
+<div class="nav">
+
+<div class="logo">
+  <div class="logoIcon">♕</div>
+  Name<span>zy.</span>
+</div>
+
+<div class="badge">
+  ✨ Gratis
+</div>
+
+</div>
+
+</div>
+
 </header>
 
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <main>
 
 <section class="hero">
-  <div class="container">
 
-    <div class="eyebrow">
-      ✦ SKAPA DITT NAMN ✦
-    </div>
+<div class="container">
 
-    <h1>Namezy</h1>
+<div class="eyebrow">
+  ✦ SKAPA DITT PERFEKTA ANVÄNDARNAMN ✦
+</div>
 
-    <p>
-      Skapa unika användarnamn för TikTok, Instagram,
-      Fortnite, Snapchat och mycket mer.
-    </p>
+<h1>Namezy</h1>
 
-  </div>
+<p>
+  Generera unika användarnamn för TikTok,
+  Instagram, Fortnite, Roblox, Discord
+  och mycket mer!
+</p>
+
+
+<div class="quickPlatforms">
+
+<button class="quickPlatform" data-quick="tiktok">
+  ♪ TikTok
+</button>
+
+<button class="quickPlatform" data-quick="instagram">
+  ◎ Instagram
+</button>
+
+<button class="quickPlatform" data-quick="fortnite">
+  🎮 Fortnite
+</button>
+
+<button class="quickPlatform" data-quick="roblox">
+  🧱 Roblox
+</button>
+
+<button class="quickPlatform" data-quick="discord">
+  💬 Discord
+</button>
+
+</div>
+
+</div>
+
 </section>
 
 
+
+<!-- =========================
+     GENERATOR
+========================= -->
+
 <section>
+
 <div class="container">
 
 <div class="generator">
 
-  <label class="label" for="word">
-    1. Skriv in ett namn eller ord
-  </label>
 
-  <input
-    id="word"
-    class="input"
-    type="text"
-    maxlength="25"
-    placeholder="T.ex. Wilma, gaming, moon..."
-    autocomplete="off"
-  >
+<label
+  class="label"
+  for="word"
+>
+  1. Skriv in ett namn eller ord
+</label>
 
 
-  <div class="sectionTitle">
-    2. Välj stil
-  </div>
-
-  <div class="choices" id="styleChoices">
-
-    <button class="choice active" data-style="cute">
-      🎀 Cute
-    </button>
-
-    <button class="choice" data-style="gamer">
-      🎮 Gamer
-    </button>
-
-    <button class="choice" data-style="dark">
-      🌙 Dark
-    </button>
-
-    <button class="choice" data-style="aesthetic">
-      ✨ Aesthetic
-    </button>
-
-    <button class="choice" data-style="cool">
-      🔥 Cool
-    </button>
-
-  </div>
+<input
+  id="word"
+  class="input"
+  type="text"
+  maxlength="25"
+  placeholder="T.ex. Wilma, moon, gaming..."
+  autocomplete="off"
+/>
 
 
-  <div class="sectionTitle">
-    3. Välj plattform
-  </div>
 
-  <div class="platforms" id="platformChoices">
-
-    <button class="platform active" data-platform="tiktok">
-      ♪ TikTok
-    </button>
-
-    <button class="platform" data-platform="instagram">
-      ◎ Instagram
-    </button>
-
-    <button class="platform" data-platform="fortnite">
-      🎮 Fortnite
-    </button>
-
-    <button class="platform" data-platform="snapchat">
-      👻 Snapchat
-    </button>
-
-    <button class="platform" data-platform="gamer">
-      ✦ Gamer
-    </button>
-
-  </div>
+<div class="sectionTitle">
+  2. Välj stil
+</div>
 
 
-  <button class="generate" id="generate">
-    ✨ Generera användarnamn
-  </button>
+<div
+  class="choices"
+  id="styleChoices"
+>
+
+
+<button
+  class="choice active"
+  data-style="cute"
+>
+  🎀 Cute
+</button>
+
+
+<button
+  class="choice"
+  data-style="gamer"
+>
+  🎮 Gamer
+</button>
+
+
+<button
+  class="choice"
+  data-style="dark"
+>
+  🌙 Dark
+</button>
+
+
+<button
+  class="choice"
+  data-style="aesthetic"
+>
+  ✨ Aesthetic
+</button>
+
+
+<button
+  class="choice"
+  data-style="cool"
+>
+  🔥 Cool
+</button>
+
 
 </div>
 
+
+
+<div class="sectionTitle">
+  3. Välj plattform
+</div>
+
+
+<div
+  class="platforms"
+  id="platformChoices"
+>
+
+
+<button
+  class="platform active"
+  data-platform="tiktok"
+>
+  ♪ TikTok
+</button>
+
+
+<button
+  class="platform"
+  data-platform="instagram"
+>
+  ◎ Instagram
+</button>
+
+
+<button
+  class="platform"
+  data-platform="fortnite"
+>
+  🎮 Fortnite
+</button>
+
+
+<button
+  class="platform"
+  data-platform="roblox"
+>
+  🧱 Roblox
+</button>
+
+
+<button
+  class="platform"
+  data-platform="discord"
+>
+  💬 Discord
+</button>
+
+
+</div>
+
+
+
+<div class="sectionTitle">
+  4. Anpassa
+</div>
+
+
+<div class="options">
+
+
+<div class="optionBox">
+
+<label
+  class="optionLabel"
+  for="length"
+>
+  NAMNLÄNGD
+</label>
+
+<select
+  class="optionSelect"
+  id="length"
+>
+
+<option value="short">
+  Kort
+</option>
+
+<option
+  value="medium"
+  selected
+>
+  Medium
+</option>
+
+<option value="long">
+  Lång
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="optionBox">
+
+<label
+  class="optionLabel"
+  for="numbers"
+>
+  SIFFROR
+</label>
+
+<select
+  class="optionSelect"
+  id="numbers"
+>
+
+<option value="some" selected>
+  Ibland
+</option>
+
+<option value="none">
+  Inga
+</option>
+
+<option value="many">
+  Många
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+
+<button
+  class="generate"
+  id="generate"
+>
+  ✨ Generera användarnamn
+</button>
+
+
+</div>
+
+
+
+<!-- RESULTS -->
 
 <div class="resultsHeader">
-  <h2>Resultat</h2>
-  <div class="count" id="resultCount">
-    0 namn
-  </div>
+
+<h2>
+  ✨ Dina namn
+</h2>
+
+<div style="display:flex;align-items:center;gap:8px;">
+
+<span
+  class="count"
+  id="resultCount"
+>
+  0 namn
+</span>
+
+<button
+  class="copyAll"
+  id="copyAll"
+>
+  📋 Kopiera alla
+</button>
+
 </div>
 
-<div class="results" id="results"></div>
+</div>
 
 
-<div class="favorites" id="favoritesSection">
+<div
+  class="results"
+  id="results"
+></div>
 
-  <div class="resultsHeader">
-    <h2>❤️ Dina favoriter</h2>
-  </div>
 
-  <div class="favoriteList" id="favoriteList"></div>
+
+<!-- FAVORITES -->
+
+<div
+  class="favorites"
+  id="favoritesSection"
+>
+
+<div class="resultsHeader">
+
+<h2>
+  ❤️ Dina favoriter
+</h2>
 
 </div>
 
+
+<div
+  class="favoriteList"
+  id="favoriteList"
+></div>
+
 </div>
+
+
+</div>
+
 </section>
 
 
+
+<!-- =========================
+     FEATURES
+========================= -->
+
 <section class="features">
+
 <div class="container">
 
+
 <div class="featuresTitle">
-  <h2>Varför Namezy?</h2>
-  <p>Allt du behöver för att hitta ditt nästa namn.</p>
+
+<h2>
+  Varför Namezy?
+</h2>
+
+<p>
+  Allt du behöver för att hitta ditt nästa namn.
+</p>
+
 </div>
+
 
 
 <div class="featureGrid">
 
-  <div class="feature">
-    <div class="featureIcon">⚡</div>
-    <h3>Snabb generator</h3>
-    <p>
-      Generera flera unika namn direkt utan att behöva
-      ladda om sidan.
-    </p>
-  </div>
+
+<div class="feature">
+
+<div class="featureIcon">
+  ⚡
+</div>
+
+<h3>
+  Snabb generator
+</h3>
+
+<p>
+  Skapa flera unika användarnamn
+  direkt utan att ladda om sidan.
+</p>
+
+</div>
 
 
-  <div class="feature">
-    <div class="featureIcon">❤️</div>
-    <h3>Spara favoriter</h3>
-    <p>
-      Markera dina favoritnamn och hitta dem igen
-      senare.
-    </p>
-  </div>
+
+<div class="feature">
+
+<div class="featureIcon">
+  ❤️
+</div>
+
+<h3>
+  Spara favoriter
+</h3>
+
+<p>
+  Markera dina favoritnamn och
+  hitta dem igen senare.
+</p>
+
+</div>
 
 
-  <div class="feature">
-    <div class="featureIcon">📋</div>
-    <h3>Kopiera direkt</h3>
-    <p>
-      Tryck på kopiera och använd namnet direkt
-      på din favoritplattform.
-    </p>
-  </div>
+
+<div class="feature">
+
+<div class="featureIcon">
+  📋
+</div>
+
+<h3>
+  Kopiera direkt
+</h3>
+
+<p>
+  Tryck på kopiera och använd
+  namnet direkt på din plattform.
+</p>
+
+</div>
+
 
 </div>
 
 </div>
+
+</section>
+
+
+
+<!-- =========================
+     SEO / INFORMATION
+========================= -->
+
+<section class="info">
+
+<div class="container">
+
+<div class="infoBox">
+
+<h2>
+  Gratis Username Generator
+</h2>
+
+<p>
+  Namezy hjälper dig att hitta nya och kreativa
+  användarnamn för sociala medier och gaming.
+  Skriv in ett ord, välj en stil och låt Namezy
+  skapa nya idéer åt dig.
+</p>
+
+
+<h3>
+  TikTok användarnamn
+</h3>
+
+<p>
+  Hitta korta, coola, söta och aesthetic
+  användarnamn som passar TikTok.
+</p>
+
+
+<h3>
+  Instagram användarnamn
+</h3>
+
+<p>
+  Skapa unika Instagram-namn med olika
+  kombinationer av bokstäver, ord och siffror.
+</p>
+
+
+<h3>
+  Fortnite, Roblox och Discord
+</h3>
+
+<p>
+  Namezy kan även användas för gamingnamn
+  till Fortnite, Roblox och Discord.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  ♕ Namezy — Skapa något unikt ♡
+
+♕ Namezy — Skapa något unikt ♡
+
 </footer>
 
 
-<div class="toast" id="toast">
+
+<div
+  class="toast"
+  id="toast"
+>
   Kopierat! ✓
 </div>
+
 
 
 <script>
@@ -735,234 +1539,290 @@ footer{
 
 
 /* =========================
-   NAME DATA
+   DATA
 ========================= */
 
 const prefixes = {
-  cute: [
-    "baby",
-    "soft",
-    "sweet",
-    "lovely",
-    "cutie",
-    "angel",
-    "pretty",
-    "bunny",
-    "honey",
-    "pink",
-    "lil",
-    "fairy",
-    "dolly",
-    "dreamy",
-    "rosie"
-  ],
 
-  gamer: [
-    "x",
-    "xx",
-    "pro",
-    "ghost",
-    "shadow",
-    "zero",
-    "nova",
-    "dark",
-    "venom",
-    "sniper",
-    "clutch",
-    "rapid",
-    "viper",
-    "storm",
-    "frost"
-  ],
+cute:[
+  "baby",
+  "soft",
+  "sweet",
+  "lovely",
+  "cutie",
+  "angel",
+  "pretty",
+  "bunny",
+  "honey",
+  "pink",
+  "lil",
+  "fairy",
+  "dolly",
+  "dreamy",
+  "rosie",
+  "mini",
+  "glossy",
+  "cherry",
+  "peachy",
+  "sparkle"
+],
 
-  dark: [
-    "void",
-    "lost",
-    "dead",
-    "dark",
-    "night",
-    "soul",
-    "alone",
-    "sin",
-    "grim",
-    "silent",
-    "noir",
-    "dusk",
-    "raven",
-    "shade",
-    "midnight"
-  ],
+gamer:[
+  "x",
+  "xx",
+  "pro",
+  "ghost",
+  "shadow",
+  "zero",
+  "nova",
+  "dark",
+  "venom",
+  "sniper",
+  "clutch",
+  "rapid",
+  "viper",
+  "storm",
+  "frost",
+  "blaze",
+  "rage",
+  "toxic",
+  "drift",
+  "phantom"
+],
 
-  aesthetic: [
-    "luna",
-    "cloud",
-    "moon",
-    "velvet",
-    "dream",
-    "mist",
-    "blush",
-    "glow",
-    "star",
-    "bloom",
-    "lavender",
-    "pearl",
-    "muse",
-    "sunset",
-    "starlit"
-  ],
+dark:[
+  "void",
+  "lost",
+  "dead",
+  "dark",
+  "night",
+  "soul",
+  "alone",
+  "sin",
+  "grim",
+  "silent",
+  "noir",
+  "dusk",
+  "raven",
+  "shade",
+  "midnight",
+  "haunted",
+  "broken",
+  "fallen",
+  "ghost",
+  "eclipse"
+],
 
-  cool: [
-    "elite",
-    "prime",
-    "legend",
-    "ice",
-    "fire",
-    "wild",
-    "royal",
-    "flash",
-    "rebel",
-    "famous",
-    "alpha",
-    "super",
-    "real",
-    "official",
-    "iconic"
-  ]
+aesthetic:[
+  "luna",
+  "cloud",
+  "moon",
+  "velvet",
+  "dream",
+  "mist",
+  "blush",
+  "glow",
+  "star",
+  "bloom",
+  "lavender",
+  "pearl",
+  "muse",
+  "sunset",
+  "starlit",
+  "ivory",
+  "aurora",
+  "daisy",
+  "violet",
+  "serene"
+],
+
+cool:[
+  "elite",
+  "prime",
+  "legend",
+  "ice",
+  "fire",
+  "wild",
+  "royal",
+  "flash",
+  "rebel",
+  "famous",
+  "alpha",
+  "super",
+  "real",
+  "official",
+  "iconic",
+  "supreme",
+  "epic",
+  "top",
+  "ultra",
+  "next"
+]
+
 };
 
 
 const suffixes = {
-  cute: [
-    "xo",
-    "xoxo",
-    "baby",
-    "luv",
-    "bby",
-    "angel",
-    "boo",
-    "bun",
-    "qt",
-    "xx",
-    "pie",
-    "kiss",
-    "love"
-  ],
 
-  gamer: [
-    "x",
-    "z",
-    "fps",
-    "fn",
-    "yt",
-    "tv",
-    "gg",
-    "op",
-    "777",
-    "999",
-    "clips",
-    "szn"
-  ],
+cute:[
+  "xo",
+  "xoxo",
+  "baby",
+  "luv",
+  "bby",
+  "angel",
+  "boo",
+  "bun",
+  "qt",
+  "xx",
+  "pie",
+  "kiss",
+  "love",
+  "x",
+  "y",
+  "ie"
+],
 
-  dark: [
-    "666",
-    "444",
-    "999",
-    "xx",
-    "void",
-    "404",
-    "exe",
-    "666x",
-    "nx",
-    "13",
-    "zzz"
-  ],
+gamer:[
+  "x",
+  "z",
+  "fps",
+  "fn",
+  "yt",
+  "tv",
+  "gg",
+  "op",
+  "777",
+  "999",
+  "clips",
+  "szn",
+  "pro",
+  "live",
+  "hq"
+],
 
-  aesthetic: [
-    "xo",
-    "moon",
-    "luv",
-    "cloud",
-    "444",
-    "222",
-    "444x",
-    "jpg",
-    "wav",
-    "core",
-    "era"
-  ],
+dark:[
+  "666",
+  "444",
+  "999",
+  "xx",
+  "void",
+  "404",
+  "exe",
+  "666x",
+  "nx",
+  "13",
+  "zzz",
+  "x",
+  "00",
+  "404x"
+],
 
-  cool: [
-    "x",
-    "xx",
-    "777",
-    "999",
-    "official",
-    "real",
-    "hq",
-    "one",
-    "szn",
-    "tv",
-    "gg"
-  ]
+aesthetic:[
+  "xo",
+  "moon",
+  "luv",
+  "cloud",
+  "444",
+  "222",
+  "444x",
+  "jpg",
+  "wav",
+  "core",
+  "era",
+  "xo",
+  "angel",
+  "dream"
+],
+
+cool:[
+  "x",
+  "xx",
+  "777",
+  "999",
+  "official",
+  "real",
+  "hq",
+  "one",
+  "szn",
+  "tv",
+  "gg",
+  "pro",
+  "live",
+  "xoxo"
+]
+
 };
 
 
 const platformSuffixes = {
 
-  tiktok: [
-    "xo",
-    "x",
-    "444",
-    "222",
-    "777",
-    "luv",
-    "era",
-    "core",
-    "szn"
-  ],
+tiktok:[
+  "xo",
+  "x",
+  "444",
+  "222",
+  "777",
+  "luv",
+  "era",
+  "core",
+  "szn",
+  "bby",
+  "xx"
+],
 
-  instagram: [
-    "xo",
-    "xoxo",
-    "jpg",
-    "444",
-    "222",
-    "era",
-    "daily",
-    "luv"
-  ],
+instagram:[
+  "xo",
+  "xoxo",
+  "jpg",
+  "444",
+  "222",
+  "era",
+  "daily",
+  "luv",
+  "aesthetic",
+  "xx"
+],
 
-  fortnite: [
-    "fn",
-    "fps",
-    "x",
-    "z",
-    "gg",
-    "clips",
-    "777",
-    "op"
-  ],
+fortnite:[
+  "fn",
+  "fps",
+  "x",
+  "z",
+  "gg",
+  "clips",
+  "777",
+  "op",
+  "pro",
+  "yt",
+  "tv"
+],
 
-  snapchat: [
-    "x",
-    "xo",
-    "bby",
-    "luv",
-    "222",
-    "444"
-  ],
+roblox:[
+  "rbx",
+  "x",
+  "xo",
+  "777",
+  "222",
+  "444",
+  "blox",
+  "xx",
+  "play",
+  "z"
+],
 
-  gamer: [
-    "fps",
-    "gg",
-    "op",
-    "x",
-    "z",
-    "fn",
-    "tv",
-    "yt",
-    "777"
-  ]
+discord:[
+  "x",
+  "xo",
+  "gg",
+  "404",
+  "777",
+  "222",
+  "444",
+  "exe",
+  "xx",
+  "z"
+]
 
 };
 
@@ -972,16 +1832,31 @@ const platformSuffixes = {
 ========================= */
 
 let selectedStyle = "cute";
+
 let selectedPlatform = "tiktok";
 
 let favorites = [];
 
+let latestNames = [];
+
+
 try{
-  favorites = JSON.parse(
-    localStorage.getItem("namezyFavorites") || "[]"
-  );
+
+  favorites =
+    JSON.parse(
+      localStorage.getItem(
+        "namezyFavorites"
+      ) || "[]"
+    );
+
+  if(!Array.isArray(favorites)){
+    favorites=[];
+  }
+
 }catch{
-  favorites = [];
+
+  favorites=[];
+
 }
 
 
@@ -1001,14 +1876,27 @@ const results =
 const resultCount =
   document.getElementById("resultCount");
 
+const favoritesSection =
+  document.getElementById(
+    "favoritesSection"
+  );
+
+const favoriteList =
+  document.getElementById(
+    "favoriteList"
+  );
+
 const toast =
   document.getElementById("toast");
 
-const favoritesSection =
-  document.getElementById("favoritesSection");
+const copyAllButton =
+  document.getElementById("copyAll");
 
-const favoriteList =
-  document.getElementById("favoriteList");
+const lengthSelect =
+  document.getElementById("length");
+
+const numbersSelect =
+  document.getElementById("numbers");
 
 
 /* =========================
@@ -1016,14 +1904,19 @@ const favoriteList =
 ========================= */
 
 function randomItem(array){
+
   return array[
-    Math.floor(Math.random() * array.length)
+    Math.floor(
+      Math.random() * array.length
+    )
   ];
+
 }
 
 
 function randomNumber(){
-  const numbers = [
+
+  return randomItem([
     "22",
     "24",
     "44",
@@ -1038,9 +1931,8 @@ function randomNumber(){
     "777",
     "888",
     "999"
-  ];
+  ]);
 
-  return randomItem(numbers);
 }
 
 
@@ -1050,7 +1942,10 @@ function cleanWord(word){
     .toLowerCase()
     .trim()
     .replace(/\s+/g,"")
-    .replace(/[^a-z0-9åäö]/gi,"");
+    .replace(
+      /[^a-z0-9åäö]/gi,
+      ""
+    );
 
 }
 
@@ -1060,50 +1955,207 @@ function capitalizeFirst(text){
   if(!text) return "";
 
   return text.charAt(0).toUpperCase()
-       + text.slice(1);
+    + text.slice(1);
+
+}
+
+
+function getRandomWord(){
+
+  return randomItem([
+
+    "luna",
+    "nova",
+    "moon",
+    "angel",
+    "shadow",
+    "dream",
+    "cloud",
+    "star",
+    "bunny",
+    "ghost",
+    "blush",
+    "velvet",
+    "rose",
+    "storm",
+    "pixel",
+    "peach",
+    "violet",
+    "spark",
+    "frost",
+    "cherry"
+
+  ]);
 
 }
 
 
 /* =========================
-   NAME GENERATOR
+   LENGTH
+========================= */
+
+function applyLength(name){
+
+  const setting =
+    lengthSelect.value;
+
+  if(setting === "short"){
+
+    if(name.length > 12){
+      name=name.slice(0,12);
+    }
+
+  }
+
+  if(setting === "medium"){
+
+    if(name.length > 17){
+      name=name.slice(0,17);
+    }
+
+  }
+
+  if(setting === "long"){
+
+    if(name.length > 22){
+      name=name.slice(0,22);
+    }
+
+  }
+
+  return name;
+
+}
+
+
+/* =========================
+   NUMBERS
+========================= */
+
+function maybeAddNumber(name){
+
+  const setting =
+    numbersSelect.value;
+
+
+  if(setting === "none"){
+    return name;
+  }
+
+
+  if(setting === "many"){
+
+    return name + randomNumber();
+
+  }
+
+
+  if(
+    Math.random() < .45
+  ){
+
+    return name + randomNumber();
+
+  }
+
+
+  return name;
+
+}
+
+
+/* =========================
+   NAME SCORE
+========================= */
+
+function getScore(name){
+
+  let score=60;
+
+
+  if(name.length >= 5 &&
+     name.length <= 15){
+
+    score += 15;
+
+  }
+
+
+  if(!name.includes("_")){
+
+    score += 5;
+
+  }
+
+
+  if(
+    /^[a-zA-Z0-9]+$/.test(name)
+  ){
+
+    score += 5;
+
+  }
+
+
+  if(
+    name.length < 22
+  ){
+
+    score += 5;
+
+  }
+
+
+  score +=
+    Math.floor(
+      Math.random()*11
+    );
+
+
+  return Math.min(
+    99,
+    score
+  );
+
+}
+
+
+/* =========================
+   GENERATE ONE NAME
 ========================= */
 
 function generateName(){
 
-  let word = cleanWord(wordInput.value);
+  let word =
+    cleanWord(
+      wordInput.value
+    );
+
 
   if(!word){
 
-    const randomWords = [
-      "luna",
-      "wilma",
-      "moon",
-      "nova",
-      "angel",
-      "shadow",
-      "dream",
-      "cloud",
-      "star",
-      "bunny",
-      "ghost",
-      "blush"
-    ];
+    word =
+      getRandomWord();
 
-    word = randomItem(randomWords);
   }
 
 
   const prefix =
-    randomItem(prefixes[selectedStyle]);
+    randomItem(
+      prefixes[selectedStyle]
+    );
 
-  const suffixPool = [
-    ...suffixes[selectedStyle],
-    ...platformSuffixes[selectedPlatform]
-  ];
 
   const suffix =
-    randomItem(suffixPool);
+    randomItem([
+
+      ...suffixes[selectedStyle],
+
+      ...platformSuffixes[
+        selectedPlatform
+      ]
+
+    ]);
 
 
   const number =
@@ -1155,7 +2207,8 @@ function generateName(){
       word + "luv",
 
     () =>
-      word + randomItem([
+      word +
+      randomItem([
         "zz",
         "xx",
         "yx",
@@ -1163,32 +2216,72 @@ function generateName(){
       ]),
 
     () =>
-      capitalizeFirst(word) + number
+      capitalizeFirst(word) +
+      number,
+
+    () =>
+      prefix +
+      word,
+
+    () =>
+      word +
+      prefix,
+
+    () =>
+      "x" +
+      word +
+      "x",
+
+    () =>
+      word +
+      "official"
 
   ];
 
 
   let name =
-    randomItem(variations)();
+    randomItem(
+      variations
+    )();
 
 
-  /* Fortnite doesn't usually need
-     long decorative names */
+  name =
+    maybeAddNumber(name);
 
-  if(selectedPlatform === "fortnite"){
 
-    name = name
-      .replace(/_/g,"")
-      .replace(/[^a-zA-Z0-9]/g,"");
+  /*
+    Fortnite / Roblox / Discord
+    använder helst enklare namn.
+  */
+
+  if(
+    selectedPlatform === "fortnite" ||
+    selectedPlatform === "roblox"
+  ){
+
+    name =
+      name
+        .replace(/_/g,"")
+        .replace(
+          /[^a-zA-Z0-9]/g,
+          ""
+        );
 
   }
 
 
-  /* Keep names reasonably short */
+  /*
+    Gör namnet kort nog.
+  */
 
-  if(name.length > 20){
+  name =
+    applyLength(name);
 
-    name = name.slice(0,20);
+
+  if(name.length > 24){
+
+    name =
+      name.slice(0,24);
 
   }
 
@@ -1199,191 +2292,303 @@ function generateName(){
 
 
 /* =========================
-   GENERATE MULTIPLE
+   GENERATE 12
 ========================= */
 
 function generateNames(){
 
-  const generated = [];
-  const used = new Set();
+  const generated=[];
 
-  let attempts = 0;
+  const used =
+    new Set();
+
+  let attempts=0;
+
 
   while(
-    generated.length < 8 &&
-    attempts < 100
+    generated.length < 12 &&
+    attempts < 200
   ){
 
-    const name = generateName();
+    const name =
+      generateName();
+
+
+    const key =
+      name.toLowerCase();
+
 
     if(
       name &&
-      !used.has(name.toLowerCase())
+      !used.has(key)
     ){
 
-      used.add(name.toLowerCase());
+      used.add(key);
 
       generated.push(name);
 
     }
+
 
     attempts++;
 
   }
 
 
-  renderResults(generated);
+  latestNames =
+    generated;
+
+
+  renderResults(
+    generated
+  );
 
 }
 
 
 /* =========================
-   RENDER RESULTS
+   RENDER
 ========================= */
 
 function renderResults(names){
 
-  results.innerHTML = "";
+  results.innerHTML="";
+
 
   resultCount.textContent =
-    names.length + " namn";
+    names.length +
+    " namn";
 
 
-  names.forEach(name => {
+  names.forEach(
+    (name,index) => {
 
-    const card =
-      document.createElement("div");
-
-    card.className = "nameCard";
-
-
-    const text =
-      document.createElement("div");
-
-    text.className = "nameText";
-
-
-    const nameElement =
-      document.createElement("div");
-
-    nameElement.className = "name";
-
-    nameElement.textContent = name;
-
-
-    const meta =
-      document.createElement("div");
-
-    meta.className = "meta";
-
-    meta.textContent =
-      platformLabel(selectedPlatform)
-      + " • "
-      + styleLabel(selectedStyle);
-
-
-    text.appendChild(nameElement);
-    text.appendChild(meta);
-
-
-    const copy =
-      document.createElement("button");
-
-    copy.className = "cardBtn";
-
-    copy.innerHTML = "📋";
-
-    copy.setAttribute(
-      "aria-label",
-      "Kopiera " + name
-    );
-
-
-    copy.addEventListener(
-      "click",
-      () => copyName(name)
-    );
-
-
-    const favorite =
-      document.createElement("button");
-
-    favorite.className =
-      "cardBtn favorite";
-
-
-    if(isFavorite(name)){
-
-      favorite.classList.add("active");
-      favorite.innerHTML = "♥";
-
-    }else{
-
-      favorite.innerHTML = "♡";
-
-    }
-
-
-    favorite.addEventListener(
-      "click",
-      () => {
-
-        toggleFavorite(name);
-
-        favorite.classList.toggle(
-          "active",
-          isFavorite(name)
+      const card =
+        document.createElement(
+          "div"
         );
 
-        favorite.innerHTML =
-          isFavorite(name) ? "♥" : "♡";
-
-      }
-    );
+      card.className =
+        "nameCard";
 
 
-    card.appendChild(text);
-    card.appendChild(copy);
-    card.appendChild(favorite);
+      card.style.animationDelay =
+        (index * .035) + "s";
 
 
-    results.appendChild(card);
+      const text =
+        document.createElement(
+          "div"
+        );
 
-  });
+      text.className =
+        "nameText";
+
+
+      const nameElement =
+        document.createElement(
+          "div"
+        );
+
+      nameElement.className =
+        "name";
+
+      nameElement.textContent =
+        name;
+
+
+      const meta =
+        document.createElement(
+          "div"
+        );
+
+      meta.className =
+        "meta";
+
+      meta.textContent =
+        platformLabel(
+          selectedPlatform
+        )
+        + " • "
+        + styleLabel(
+          selectedStyle
+        );
+
+
+      const score =
+        document.createElement(
+          "div"
+        );
+
+      score.className =
+        "score";
+
+      score.textContent =
+        "⭐ " +
+        getScore(name) +
+        "/100";
+
+
+      text.appendChild(
+        nameElement
+      );
+
+      text.appendChild(
+        meta
+      );
+
+      text.appendChild(
+        score
+      );
+
+
+      /* COPY */
+
+      const copy =
+        document.createElement(
+          "button"
+        );
+
+      copy.className =
+        "cardBtn";
+
+      copy.innerHTML =
+        "📋";
+
+      copy.setAttribute(
+        "aria-label",
+        "Kopiera " + name
+      );
+
+
+      copy.addEventListener(
+        "click",
+        () => copyName(name)
+      );
+
+
+      /* FAVORITE */
+
+      const favorite =
+        document.createElement(
+          "button"
+        );
+
+      favorite.className =
+        "cardBtn favorite";
+
+
+      updateFavoriteButton(
+        favorite,
+        name
+      );
+
+
+      favorite.addEventListener(
+        "click",
+        () => {
+
+          toggleFavorite(name);
+
+          updateFavoriteButton(
+            favorite,
+            name
+          );
+
+        }
+      );
+
+
+      card.appendChild(text);
+
+      card.appendChild(copy);
+
+      card.appendChild(favorite);
+
+      results.appendChild(card);
+
+    }
+  );
 
 }
 
 
 /* =========================
-   PLATFORM LABELS
+   LABELS
 ========================= */
 
 function platformLabel(platform){
 
-  const labels = {
+  const labels={
+
     tiktok:"TikTok",
     instagram:"Instagram",
     fortnite:"Fortnite",
-    snapchat:"Snapchat",
-    gamer:"Gamer"
+    roblox:"Roblox",
+    discord:"Discord"
+
   };
 
-  return labels[platform] || "Social";
+
+  return (
+    labels[platform] ||
+    "Social"
+  );
 
 }
 
 
 function styleLabel(style){
 
-  const labels = {
+  const labels={
+
     cute:"Cute",
     gamer:"Gamer",
     dark:"Dark",
     aesthetic:"Aesthetic",
     cool:"Cool"
+
   };
 
-  return labels[style] || style;
+
+  return (
+    labels[style] ||
+    style
+  );
+
+}
+
+
+/* =========================
+   FAVORITE BUTTON
+========================= */
+
+function updateFavoriteButton(
+  button,
+  name
+){
+
+  if(
+    isFavorite(name)
+  ){
+
+    button.classList.add(
+      "active"
+    );
+
+    button.innerHTML =
+      "♥";
+
+  }else{
+
+    button.classList.remove(
+      "active"
+    );
+
+    button.innerHTML =
+      "♡";
+
+  }
 
 }
 
@@ -1401,34 +2606,94 @@ async function copyName(name){
       window.isSecureContext
     ){
 
-      await navigator.clipboard.writeText(name);
+      await navigator.clipboard
+        .writeText(name);
 
     }else{
 
       const area =
-        document.createElement("textarea");
+        document.createElement(
+          "textarea"
+        );
 
-      area.value = name;
+      area.value =
+        name;
 
-      area.style.position = "fixed";
-      area.style.left = "-9999px";
+      area.style.position =
+        "fixed";
 
-      document.body.appendChild(area);
+      area.style.left =
+        "-9999px";
+
+      document.body.appendChild(
+        area
+      );
 
       area.focus();
+
       area.select();
 
-      document.execCommand("copy");
+      document.execCommand(
+        "copy"
+      );
 
       area.remove();
 
     }
 
-    showToast("Kopierat! ✓");
 
-  }catch(error){
+    showToast(
+      "Kopierat! ✓"
+    );
 
-    showToast("Kunde inte kopiera automatiskt");
+  }catch{
+
+    showToast(
+      "Kunde inte kopiera"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   COPY ALL
+========================= */
+
+async function copyAll(){
+
+  if(
+    latestNames.length === 0
+  ){
+
+    showToast(
+      "Generera namn först"
+    );
+
+    return;
+
+  }
+
+
+  const text =
+    latestNames.join("\n");
+
+
+  try{
+
+    await navigator.clipboard
+      .writeText(text);
+
+    showToast(
+      "Alla namn kopierade! ✓"
+    );
+
+  }catch{
+
+    showToast(
+      "Kunde inte kopiera"
+    );
 
   }
 
@@ -1441,18 +2706,30 @@ async function copyName(name){
 
 let toastTimer;
 
+
 function showToast(message){
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
-  toast.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(
-    () => toast.classList.remove("show"),
-    1700
+  toast.classList.add(
+    "show"
   );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () =>
+        toast.classList.remove(
+          "show"
+        ),
+      1800
+    );
 
 }
 
@@ -1463,27 +2740,38 @@ function showToast(message){
 
 function isFavorite(name){
 
-  return favorites.includes(name);
+  return favorites.includes(
+    name
+  );
 
 }
 
 
 function toggleFavorite(name){
 
-  if(isFavorite(name)){
+  if(
+    isFavorite(name)
+  ){
 
     favorites =
       favorites.filter(
-        item => item !== name
+        item =>
+          item !== name
       );
 
-    showToast("Borttagen från favoriter");
+    showToast(
+      "Borttagen från favoriter"
+    );
 
   }else{
 
-    favorites.push(name);
+    favorites.push(
+      name
+    );
 
-    showToast("Sparad som favorit ❤️");
+    showToast(
+      "Sparad som favorit ❤️"
+    );
 
   }
 
@@ -1501,12 +2789,12 @@ function saveFavorites(){
 
     localStorage.setItem(
       "namezyFavorites",
-      JSON.stringify(favorites)
+      JSON.stringify(
+        favorites
+      )
     );
 
   }catch{
-
-    /* Ignore storage errors */
 
   }
 
@@ -1515,68 +2803,111 @@ function saveFavorites(){
 
 function renderFavorites(){
 
-  favoriteList.innerHTML = "";
+  favoriteList.innerHTML="";
 
 
-  if(favorites.length === 0){
+  if(
+    favorites.length === 0
+  ){
 
-    favoritesSection.classList.remove("show");
+    favoritesSection
+      .classList
+      .remove("show");
 
     return;
 
   }
 
 
-  favoritesSection.classList.add("show");
+  favoritesSection
+    .classList
+    .add("show");
 
 
-  favorites.forEach(name => {
+  favorites.forEach(
+    name => {
 
-    const item =
-      document.createElement("div");
+      const item =
+        document.createElement(
+          "div"
+        );
 
-    item.className = "favoriteItem";
-
-
-    const text =
-      document.createElement("span");
-
-    text.textContent = name;
+      item.className =
+        "favoriteItem";
 
 
-    const copy =
-      document.createElement("button");
+      const text =
+        document.createElement(
+          "span"
+        );
 
-    copy.textContent = "📋";
-
-    copy.addEventListener(
-      "click",
-      () => copyName(name)
-    );
+      text.textContent =
+        name;
 
 
-    const remove =
-      document.createElement("button");
+      const copy =
+        document.createElement(
+          "button"
+        );
 
-    remove.textContent = "×";
-
-    remove.addEventListener(
-      "click",
-      () => {
-
-        toggleFavorite(name);
-
-      }
-    );
+      copy.textContent =
+        "📋";
 
 
-    item.appendChild(text);
-    item.appendChild(copy);
-    item.appendChild(remove);
+      copy.setAttribute(
+        "aria-label",
+        "Kopiera " + name
+      );
 
-    favoriteList.appendChild(item);
 
-  });
+      copy.addEventListener(
+        "click",
+        () =>
+          copyName(name)
+      );
+
+
+      const remove =
+        document.createElement(
+          "button"
+        );
+
+      remove.textContent =
+        "×";
+
+
+      remove.setAttribute(
+        "aria-label",
+        "Ta bort " + name
+      );
+
+
+      remove.addEventListener(
+        "click",
+        () =>
+          toggleFavorite(name)
+      );
+
+
+      item.appendChild(
+        text
+      );
+
+      item.appendChild(
+        copy
+      );
+
+      item.appendChild(
+        remove
+      );
+
+
+      favoriteList.appendChild(
+        item
+      );
+
+    }
+  );
 
 }
 
@@ -1586,32 +2917,43 @@ function renderFavorites(){
 ========================= */
 
 document
-  .querySelectorAll("#styleChoices .choice")
-  .forEach(button => {
+  .querySelectorAll(
+    "#styleChoices .choice"
+  )
+  .forEach(
+    button => {
 
-    button.addEventListener(
-      "click",
-      () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        document
-          .querySelectorAll(
-            "#styleChoices .choice"
-          )
-          .forEach(
-            item =>
-              item.classList.remove("active")
+          document
+            .querySelectorAll(
+              "#styleChoices .choice"
+            )
+            .forEach(
+              item =>
+                item.classList
+                  .remove("active")
+            );
+
+
+          button.classList.add(
+            "active"
           );
 
 
-        button.classList.add("active");
+          selectedStyle =
+            button.dataset.style;
 
-        selectedStyle =
-          button.dataset.style;
 
-      }
-    );
+          generateNames();
 
-  });
+        }
+      );
+
+    }
+  );
 
 
 /* =========================
@@ -1622,35 +2964,93 @@ document
   .querySelectorAll(
     "#platformChoices .platform"
   )
-  .forEach(button => {
+  .forEach(
+    button => {
 
-    button.addEventListener(
-      "click",
-      () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        document
-          .querySelectorAll(
-            "#platformChoices .platform"
-          )
-          .forEach(
-            item =>
-              item.classList.remove("active")
+          document
+            .querySelectorAll(
+              "#platformChoices .platform"
+            )
+            .forEach(
+              item =>
+                item.classList
+                  .remove("active")
+            );
+
+
+          button.classList.add(
+            "active"
           );
 
 
-        button.classList.add("active");
+          selectedPlatform =
+            button.dataset.platform;
 
-        selectedPlatform =
-          button.dataset.platform;
 
-      }
-    );
+          generateNames();
 
-  });
+        }
+      );
+
+    }
+  );
 
 
 /* =========================
-   GENERATE BUTTON
+   QUICK PLATFORM BUTTONS
+========================= */
+
+document
+  .querySelectorAll(
+    ".quickPlatform"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const platform =
+            button.dataset.quick;
+
+
+          const target =
+            document.querySelector(
+              '[data-platform="' +
+              platform +
+              '"]'
+            );
+
+
+          if(target){
+
+            target.click();
+
+            document
+              .querySelector(
+                ".generator"
+              )
+              .scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+              });
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================
+   GENERATE
 ========================= */
 
 generateButton.addEventListener(
@@ -1660,20 +3060,48 @@ generateButton.addEventListener(
 
 
 /* =========================
-   ENTER KEY
+   COPY ALL
+========================= */
+
+copyAllButton.addEventListener(
+  "click",
+  copyAll
+);
+
+
+/* =========================
+   ENTER
 ========================= */
 
 wordInput.addEventListener(
   "keydown",
   event => {
 
-    if(event.key === "Enter"){
+    if(
+      event.key === "Enter"
+    ){
 
       generateNames();
 
     }
 
   }
+);
+
+
+/* =========================
+   OPTION CHANGES
+========================= */
+
+lengthSelect.addEventListener(
+  "change",
+  generateNames
+);
+
+
+numbersSelect.addEventListener(
+  "change",
+  generateNames
 );
 
 
